@@ -65,14 +65,11 @@ nav {
 /* ── LOGO — DO NOT MODIFY ── */
 .logo-img { max-height: 64px; width: auto; display: block; }
 
-.nav-links {
-  display: flex; gap: 2rem; list-style: none; align-items: center;
-}
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a {
   text-decoration: none; color: var(--deep-blue);
   font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  transition: color var(--t);
-  position: relative;
+  transition: color var(--t); position: relative;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -.25rem; left: 0; right: 0; height: 2px;
@@ -81,7 +78,6 @@ nav {
 }
 .nav-links a:hover { color: var(--red); }
 .nav-links a:hover::after { transform: scaleX(1); }
-
 .btn-nav {
   background: var(--red) !important; color: var(--white) !important;
   padding: .55rem 1.3rem; border-radius: var(--radius-sm);
@@ -89,25 +85,14 @@ nav {
   transition: background var(--t), transform var(--t), box-shadow var(--t) !important;
   font-weight: 700 !important;
 }
-.btn-nav:hover {
-  background: var(--red-dark) !important; transform: translateY(-1px);
-  box-shadow: 0 5px 18px rgba(230,57,70,.38) !important;
-}
+.btn-nav:hover { background: var(--red-dark) !important; transform: translateY(-1px); box-shadow: 0 5px 18px rgba(230,57,70,.38) !important; }
 .btn-nav::after { display: none !important; }
 
-a:focus-visible, button:focus-visible {
-  outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px;
-}
+a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px; }
 
 /* Hamburger */
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 6px; border: none; background: none;
-}
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--deep-blue); border-radius: 2px; transition: all .28s ease;
-}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border: none; background: none; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--deep-blue); border-radius: 2px; transition: all .28s ease; }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -121,111 +106,60 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 8px 32px rgba(29,53,87,.12);
   animation: slideDown .22s ease;
 }
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
 .mobile-menu.active { display: block; }
-.mobile-menu a {
-  display: block; color: var(--deep-blue); text-decoration: none;
-  padding: .9rem 0; font-size: .95rem; font-weight: 600;
-  border-bottom: 1px solid rgba(29,53,87,.08); transition: color var(--t);
-}
+.mobile-menu a { display: block; color: var(--deep-blue); text-decoration: none; padding: .9rem 0; font-size: .95rem; font-weight: 600; border-bottom: 1px solid rgba(29,53,87,.08); transition: color var(--t); }
 .mobile-menu a:last-of-type { border-bottom: none; }
 .mobile-menu a:hover { color: var(--red); }
-.btn-mob {
-  margin-top: 1rem; display: block; text-align: center;
-  background: var(--red) !important; color: var(--white) !important;
-  padding: .9rem; border-radius: var(--radius-sm);
-  font-weight: 700; text-transform: uppercase; font-size: .85rem; letter-spacing: .06em;
-}
+.btn-mob { margin-top: 1rem; display: block; text-align: center; background: var(--red) !important; color: var(--white) !important; padding: .9rem; border-radius: var(--radius-sm); font-weight: 700; text-transform: uppercase; font-size: .85rem; letter-spacing: .06em; }
 
 /* ── HERO IMAGE START ──
-   Photo background with deep-blue overlay (rgba 0.45) to guarantee
-   white text contrast (WCAG AA). The slow-zoom uses transform:scale
-   on the pseudo-element so only the compositor layer repaints — zero
-   layout triggers. Duration 30s, amplitude 1.01→1.03 (imperceptible).
-   Disabled entirely on prefers-reduced-motion.
+   Image: ./assets/markus-krisetya-nhTeowcfacg-unsplash.jpg
+   Deep-blue gradient overlay ensures WCAG AA contrast for white text.
+   Slow zoom (30s) uses transform:scale on a separate div — GPU only, no layout repaints.
+   prefers-reduced-motion: zoom disabled.
+   DEV NOTE: If image missing, confirm ./assets/markus-krisetya-nhTeowcfacg-unsplash.jpg exists.
 ── */
 .hero {
   padding-top: var(--nav-h); min-height: 92vh;
-  /* CSS gradient fallback for very small/slow connections */
   background: linear-gradient(150deg, #1D3557 0%, #2a4a7f 55%, #1a3252 100%);
-  color: var(--white);
-  display: flex; align-items: center; justify-content: center;
+  color: var(--white); display: flex; align-items: center; justify-content: center;
   text-align: center; position: relative; overflow: hidden;
 }
-
-/* Photo layer — separate pseudo-element so we can animate scale
-   without affecting text or the overlay */
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('./markus-krisetya-nhTeowcfacg-unsplash.jpg');
-  background-position: center; background-size: cover;
-  background-repeat: no-repeat;
-  /* Slow zoom: scale 1.01 → 1.03, 30s cycle, alternate */
+  background-image: url('./assets/markus-krisetya-nhTeowcfacg-unsplash.jpg');
+  background-position: center; background-size: cover; background-repeat: no-repeat;
   animation: heroZoom 30s ease-in-out infinite alternate;
-  transform-origin: center center;
-  will-change: transform;
+  transform-origin: center center; will-change: transform;
 }
-
-@keyframes heroZoom {
-  from { transform: scale(1.01); }
-  to   { transform: scale(1.03); }
-}
-
-/* Deep-blue + sand-tint overlay — ensures legibility over any photo tone.
-   Two-layer: bottom deep-blue tint + subtle vignette at top/bottom edges. */
+@keyframes heroZoom { from { transform: scale(1.01); } to { transform: scale(1.03); } }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(29,53,87,.55) 0%,
-      rgba(29,53,87,.38) 50%,
-      rgba(29,53,87,.62) 100%
-    );
+  background: linear-gradient(to bottom, rgba(29,53,87,.55) 0%, rgba(29,53,87,.38) 50%, rgba(29,53,87,.62) 100%);
   pointer-events: none;
 }
-
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 90% 60% at 50% 110%, rgba(230,57,70,.10) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255,255,255,.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse 90% 60% at 50% 110%, rgba(230,57,70,.10) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255,255,255,.04) 0%, transparent 60%);
   pointer-events: none; z-index: 2;
 }
 .hero::after {
   content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
   background: var(--sand-warm); clip-path: ellipse(55% 100% at 50% 100%); z-index: 4;
 }
-
-.hero-content {
-  position: relative; z-index: 3;
-  padding: 3rem 2rem 6rem; max-width: 800px;
-}
-
-/* Disable zoom on reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg { animation: none !important; transform: scale(1.02); }
-}
-/* ── HERO IMAGE END ── */
+.hero-content { position: relative; z-index: 3; padding: 3rem 2rem 6rem; max-width: 800px; }
 .hero-eyebrow {
-  display: inline-block;
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
-  color: rgba(255,255,255,.85);
-  font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  padding: .35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+  display: inline-block; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.85); font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; padding: .35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
 }
-.hero h1 {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.08; letter-spacing: -.02em;
-  margin-bottom: 1.2rem; font-weight: 700;
-}
-.hero p {
-  font-size: clamp(.95rem, 2vw, 1.15rem); opacity: .8;
-  max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
-}
+.hero h1 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.6rem,6vw,4.4rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 1.2rem; font-weight: 700; }
+.hero p { font-size: clamp(.95rem,2vw,1.15rem); opacity: .8; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7; }
+@media (prefers-reduced-motion: reduce) { .hero-bg { animation: none !important; transform: scale(1.02); } }
+/* ── HERO IMAGE END ── */
+
 .btn-primary {
   display: inline-block; background: var(--red); color: var(--white);
   padding: 1rem 2.4rem; border-radius: var(--radius-sm);
@@ -234,86 +168,54 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 4px 24px rgba(230,57,70,.44);
   transition: background var(--t), transform var(--t), box-shadow var(--t);
 }
-.btn-primary:hover {
-  background: var(--red-dark); transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(230,57,70,.48);
-}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(230,57,70,.48); }
 
-/* ── SECTIONS ── */
+/* Sections */
 .section-wrap { padding: 5.5rem 2rem; max-width: 1100px; margin: 0 auto; }
-.section-label {
-  display: inline-block; font-size: .7rem; font-weight: 800;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: .75rem;
-}
-h2 {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.4rem); color: var(--deep-blue);
-  margin-bottom: .6rem; letter-spacing: -.01em; line-height: 1.2;
-}
-.section-sub {
-  color: var(--text-soft); font-size: 1rem; max-width: 540px;
-  margin-bottom: 3rem; line-height: 1.7;
-}
+.section-label { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: .75rem; }
+h2 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.75rem,3.5vw,2.4rem); color: var(--deep-blue); margin-bottom: .6rem; letter-spacing: -.01em; line-height: 1.2; }
+.section-sub { color: var(--text-soft); font-size: 1rem; max-width: 540px; margin-bottom: 3rem; line-height: 1.7; }
 
 /* ── ABOUT IMAGE START ──
-   Wide screens: two-column layout — photo left (40%), text right (60%).
-   The image gets a subtle right-edge vignette so it blends into the text panel.
-   Mobile: image stacks above text with a dark overlay for readability.
-   Soft gradient overlay over image keeps the paragraph the visual focus.
+   Landscape photo: ./assets/matthew-waring-MJAoiige14E-unsplash.jpg
+   Portrait photo:  ./assets/100_0600.HEIC
+   DEV NOTE: HEIC may not render in all browsers.
+   Convert to JPG/PNG (./assets/100_0600.jpg) and update src if needed.
 ── */
-.about-wrap {
-  display: grid;
-  grid-template-columns: 40% 1fr;
-  min-height: 420px;
-}
-
-.about-img-panel {
-  position: relative; overflow: hidden;
-}
-.about-img-panel img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  display: block;
-}
-/* Right-edge vignette — blends photo into text panel */
+.about-wrap { display: grid; grid-template-columns: 40% 1fr; min-height: 420px; }
+.about-img-panel { position: relative; overflow: hidden; }
+.about-img-panel img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 .about-img-panel::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(29,53,87,.08) 0%,
-    rgba(250,248,242,.85) 92%,
-    rgba(250,248,242,1) 100%
-  );
+  background: linear-gradient(to right, rgba(29,53,87,.08) 0%, rgba(250,248,242,.85) 92%, rgba(250,248,242,1) 100%);
   pointer-events: none;
 }
+.about-text-panel { padding: 4rem 3rem 4rem 2.5rem; display: flex; flex-direction: column; justify-content: center; background: var(--sand-warm); }
 
-.about-text-panel {
-  padding: 4rem 3rem 4rem 2.5rem;
-  display: flex; flex-direction: column; justify-content: center;
-  background: var(--sand-warm);
+/* Owner portrait inside about text panel */
+.owner-portrait {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  object-fit: cover; object-position: center top;
+  border: 3px solid var(--sand-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.2rem;
+  /* Graceful fallback background if HEIC doesn't load */
+  background: linear-gradient(135deg, var(--deep-blue), var(--blue-mid));
+  display: block;
 }
 
-/* Mobile: stack image above text, constrain height */
 @media (max-width: 780px) {
   .about-wrap { grid-template-columns: 1fr; }
   .about-img-panel { height: 260px; }
-  /* On mobile overlay is darker so text below is clearly separate */
-  .about-img-panel::after {
-    background: linear-gradient(
-      to bottom,
-      rgba(29,53,87,.08) 0%,
-      rgba(250,248,242,.6) 80%,
-      rgba(250,248,242,1) 100%
-    );
-  }
+  .about-img-panel::after { background: linear-gradient(to bottom, rgba(29,53,87,.08) 0%, rgba(250,248,242,.6) 80%, rgba(250,248,242,1) 100%); }
   .about-text-panel { padding: 2.5rem 1.5rem; }
+  .owner-portrait { width: 90px; height: 90px; }
 }
 /* ── ABOUT IMAGE END ── */
 
-/* ── CARDS ── */
-.cards {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
-}
+/* Cards */
+.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; }
 .card {
   background: var(--sand-warm); border: 1px solid var(--sand-border);
   border-radius: var(--radius-md); padding: 2.25rem 2rem;
@@ -321,55 +223,25 @@ h2 {
   transition: box-shadow var(--t), transform var(--t), border-color var(--t);
   position: relative; overflow: hidden;
 }
-.card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--red), rgba(230,57,70,.3));
-  opacity: 0; transition: opacity var(--t);
-}
-.card:hover {
-  transform: translateY(-4px); box-shadow: var(--shadow-md);
-  border-color: rgba(29,53,87,.15);
-}
+.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--red), rgba(230,57,70,.3)); opacity: 0; transition: opacity var(--t); }
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(29,53,87,.15); }
 .card:hover::before { opacity: 1; }
-.card-icon {
-  width: 48px; height: 48px; background: var(--blue-light); border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.4rem; color: var(--deep-blue); flex-shrink: 0;
-}
+.card-icon { width: 48px; height: 48px; background: var(--blue-light); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.4rem; color: var(--deep-blue); flex-shrink: 0; }
 .card-icon svg { width: 26px; height: 26px; fill: currentColor; }
-.card h3 {
-  font-family: Georgia, serif; font-size: 1.18rem; color: var(--deep-blue);
-  margin-bottom: .6rem; line-height: 1.3;
-}
+.card h3 { font-family: Georgia, serif; font-size: 1.18rem; color: var(--deep-blue); margin-bottom: .6rem; line-height: 1.3; }
 .card p { color: var(--text-mid); font-size: .93rem; line-height: 1.7; flex: 1; }
 
-/* ── FOOTER ── */
-footer {
-  background: #0d1e2e; color: rgba(255,255,255,.42);
-  padding: 3rem 2rem; text-align: center;
-}
+/* Footer */
+footer { background: #0d1e2e; color: rgba(255,255,255,.42); padding: 3rem 2rem; text-align: center; }
 footer > p { font-size: .82rem; }
-.footer-social {
-  display: flex; justify-content: center; align-items: center;
-  gap: clamp(10px,2vw,16px); margin: 0 0 1.25rem;
-}
-.social-link {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: var(--radius-sm);
-  color: rgba(255,255,255,.55); text-decoration: none; background: transparent;
-  transition: color var(--t), transform var(--t); outline: none;
-}
+.footer-social { display: flex; justify-content: center; align-items: center; gap: clamp(10px,2vw,16px); margin: 0 0 1.25rem; }
+.social-link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-sm); color: rgba(255,255,255,.55); text-decoration: none; background: transparent; transition: color var(--t), transform var(--t); outline: none; }
 .social-icon { width: 58%; height: 58%; display: block; fill: currentColor; flex-shrink: 0; }
 .social-link:hover, .social-link:focus { color: var(--red); transform: translateY(-3px); }
 .social-link:focus-visible { box-shadow: 0 0 0 3px rgba(230,57,70,.4); }
 
 /* ── BOOKING MODAL ── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(13,30,46,.65); z-index: 500;
-  align-items: center; justify-content: center;
-  backdrop-filter: blur(6px); padding: 1rem;
-}
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(13,30,46,.65); z-index: 700; align-items: center; justify-content: center; backdrop-filter: blur(6px); padding: 1rem; }
 .modal-overlay.active { display: flex; }
 .modal-box {
   background: var(--white); border-radius: var(--radius-lg);
@@ -377,56 +249,26 @@ footer > p { font-size: .82rem; }
   position: relative; box-shadow: var(--shadow-lg);
   animation: modalUp .26s cubic-bezier(.2,.9,.2,1);
 }
-@keyframes modalUp {
-  from { opacity: 0; transform: translateY(22px) scale(.97); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-.modal-close {
-  position: absolute; top: 1.1rem; right: 1.1rem;
-  background: none; border: none; cursor: pointer;
-  width: 34px; height: 34px; border-radius: 50%;
-  color: #888; font-size: 1.3rem; line-height: 1;
-  display: flex; align-items: center; justify-content: center;
-  transition: background var(--t), color var(--t);
-}
+@keyframes modalUp { from { opacity:0; transform:translateY(22px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+.modal-close { position: absolute; top: 1.1rem; right: 1.1rem; background: none; border: none; cursor: pointer; width: 34px; height: 34px; border-radius: 50%; color: #888; font-size: 1.3rem; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background var(--t), color var(--t); }
 .modal-close:hover { background: #fef2f2; color: var(--red); }
-.modal-box h3 {
-  font-family: Georgia, serif; font-size: 1.55rem;
-  color: var(--deep-blue); margin-bottom: 1.6rem; line-height: 1.2;
-}
+.modal-box h3 { font-family: Georgia, serif; font-size: 1.55rem; color: var(--deep-blue); margin-bottom: 1.6rem; line-height: 1.2; }
 .form-group { margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: .35rem; }
-.form-group label {
-  font-size: .72rem; font-weight: 700; letter-spacing: .09em;
-  text-transform: uppercase; color: var(--deep-blue);
-}
-.form-group input, .form-group textarea {
-  width: 100%; padding: .75rem 1rem;
-  border: 1.5px solid var(--sand-border); border-radius: var(--radius-sm);
-  font-family: inherit; font-size: .93rem; color: var(--text-main);
-  background: var(--sand-warm);
-  transition: border-color var(--t), box-shadow var(--t), background var(--t);
-  outline: none;
-}
-.form-group input:focus, .form-group textarea:focus {
-  border-color: var(--deep-blue); background: var(--white);
-  box-shadow: 0 0 0 3px rgba(29,53,87,.09);
-}
+.form-group label { font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--deep-blue); }
+.form-group input, .form-group textarea { width: 100%; padding: .75rem 1rem; border: 1.5px solid var(--sand-border); border-radius: var(--radius-sm); font-family: inherit; font-size: .93rem; color: var(--text-main); background: var(--sand-warm); transition: border-color var(--t), box-shadow var(--t), background var(--t); outline: none; }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--deep-blue); background: var(--white); box-shadow: 0 0 0 3px rgba(29,53,87,.09); }
 .form-group textarea { resize: vertical; min-height: 100px; }
 .err { color: var(--red); font-size: .78rem; margin-top: .2rem; display: none; font-weight: 500; }
 .confirm-wrap { text-align: center; padding: 1.5rem 0; }
-.confirm-check {
-  width: 60px; height: 60px; border-radius: 50%; background: #edf7ee;
-  display: flex; align-items: center; justify-content: center; margin: 0 auto 1.3rem;
-}
-.confirm-wrap h4 {
-  font-family: Georgia, serif; font-size: 1.25rem; color: var(--deep-blue); margin-bottom: .8rem;
-}
+.confirm-check { width: 60px; height: 60px; border-radius: 50%; background: #edf7ee; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.3rem; }
+.confirm-wrap h4 { font-family: Georgia, serif; font-size: 1.25rem; color: var(--deep-blue); margin-bottom: .8rem; }
 .confirm-wrap p { color: var(--text-mid); font-size: .97rem; line-height: 1.65; margin-bottom: .5rem; }
 .confirm-wrap .note { font-size: .82rem; color: var(--text-soft); }
 .confirm-wrap a { color: var(--deep-blue); }
 
-/* ── CHATBOT WIDGET (scoped .il-chat prefix) ── */
-.il-chat-toggle {
+/* ── CHATBOT WIDGET — scoped .ilc- prefix ── */
+/* Toggle bubble */
+.ilc-toggle {
   position: fixed; bottom: 20px; right: 20px; z-index: 600;
   width: 56px; height: 56px; border-radius: 50%;
   background: var(--deep-blue); color: var(--white);
@@ -436,239 +278,148 @@ footer > p { font-size: .82rem; }
   transition: transform 200ms ease, box-shadow 200ms ease;
   transform: translateZ(0);
 }
-.il-chat-toggle:hover  { transform: scale(1.08) translateZ(0); box-shadow: 0 8px 32px rgba(29,53,87,.55); }
-.il-chat-toggle:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
-.il-chat-toggle svg { width: 26px; height: 26px; fill: var(--white); pointer-events: none; flex-shrink: 0; }
+.ilc-toggle:hover { transform: scale(1.08) translateZ(0); box-shadow: 0 8px 32px rgba(29,53,87,.55); }
+.ilc-toggle:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.ilc-toggle svg { width: 26px; height: 26px; fill: var(--white); pointer-events: none; }
 
-.il-chat-panel {
+/* Panel */
+.ilc-panel {
   position: fixed; bottom: 88px; right: 20px; z-index: 599;
-  width: 320px; background: var(--white); border-radius: 18px;
+  width: 340px; background: var(--white); border-radius: 18px;
   box-shadow: 0 8px 40px rgba(29,53,87,.18), 0 2px 8px rgba(29,53,87,.08);
   display: flex; flex-direction: column; overflow: hidden;
+  max-height: calc(100vh - 130px);
   transform: translateY(10px) scale(0.985) translateZ(0);
   opacity: 0; visibility: hidden;
   transition: opacity 280ms cubic-bezier(.2,.9,.3,1), transform 280ms cubic-bezier(.2,.9,.3,1), visibility 280ms;
   pointer-events: none;
 }
-.il-chat-panel.il-open {
-  transform: translateY(0) scale(1) translateZ(0);
-  opacity: 1; visibility: visible; pointer-events: auto;
-}
+.ilc-panel.ilc-open { transform: translateY(0) scale(1) translateZ(0); opacity: 1; visibility: visible; pointer-events: auto; }
 
-.il-chat-head {
-  background: var(--deep-blue); color: var(--white);
-  padding: 1rem 1.1rem .85rem;
-  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
-}
-.il-chat-head-left { display: flex; align-items: center; gap: .65rem; }
-.il-chat-avatar {
-  width: 34px; height: 34px; border-radius: 50%; background: #F5F5DC;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.il-chat-avatar svg { width: 19px; height: 19px; fill: var(--deep-blue); }
-.il-chat-title { font-weight: 700; font-size: .9rem; line-height: 1.2; }
-.il-chat-sub   { font-size: .72rem; opacity: .7; line-height: 1.3; }
-.il-chat-close {
-  background: none; border: none; color: var(--white); cursor: pointer;
-  width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 160ms ease; flex-shrink: 0;
-}
-.il-chat-close:hover { background: rgba(255,255,255,.18); }
-.il-chat-close:focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 2px; }
-.il-chat-close svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; }
+/* Panel header */
+.ilc-head { background: var(--deep-blue); color: var(--white); padding: 1rem 1.1rem .85rem; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.ilc-head-left { display: flex; align-items: center; gap: .65rem; }
+.ilc-avatar { width: 34px; height: 34px; border-radius: 50%; background: #F5F5DC; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ilc-avatar svg { width: 19px; height: 19px; fill: var(--deep-blue); }
+.ilc-title { font-weight: 700; font-size: .9rem; line-height: 1.2; }
+.ilc-sub { font-size: .72rem; opacity: .7; line-height: 1.3; }
+.ilc-close-btn { background: none; border: none; color: var(--white); cursor: pointer; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 160ms ease; flex-shrink: 0; }
+.ilc-close-btn:hover { background: rgba(255,255,255,.18); }
+.ilc-close-btn:focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 2px; }
+.ilc-close-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; }
 
-.il-chat-options {
-  padding: 1rem 1rem .5rem;
+/* Chat message area */
+.ilc-messages {
+  flex: 1; overflow-y: auto; padding: .9rem 1rem .5rem;
   display: flex; flex-direction: column; gap: 8px;
-  overflow-y: auto; flex: 1;
+  min-height: 80px; max-height: 220px;
 }
+.ilc-msg {
+  padding: .6rem .9rem; border-radius: 12px;
+  font-size: .86rem; line-height: 1.5;
+  max-width: 90%; animation: msgIn 220ms cubic-bezier(.2,.9,.3,1);
+}
+@keyframes msgIn { from { opacity:0; transform: translateY(6px) scale(.97); } to { opacity:1; transform: translateY(0) scale(1); } }
+.ilc-msg.bot { background: var(--blue-light); color: var(--text-main); align-self: flex-start; }
+.ilc-msg.user { background: var(--deep-blue); color: var(--white); align-self: flex-end; }
 
-.il-chat-opt {
-  display: flex; align-items: center; gap: 12px;
-  min-height: 48px; padding: .65rem .9rem;
+/* Typing indicator */
+.ilc-typing { display: flex; align-items: center; gap: 4px; padding: .6rem .9rem; background: var(--blue-light); border-radius: 12px; width: fit-content; }
+.ilc-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--text-soft); display: block; animation: typingDot 1.2s infinite ease-in-out; }
+.ilc-typing span:nth-child(2) { animation-delay: .2s; }
+.ilc-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes typingDot { 0%,60%,100% { transform: scale(1); opacity:.5; } 30% { transform: scale(1.4); opacity:1; } }
+
+/* Quick action buttons */
+.ilc-actions { padding: .6rem 1rem .5rem; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; border-top: 1px solid var(--sand-border); }
+.ilc-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ilc-btn {
+  display: flex; align-items: center; gap: 9px;
+  min-height: 42px; padding: .55rem .8rem;
   background: #faf8f2; color: var(--deep-blue);
-  border: 1.5px solid #e8e4d4; border-radius: 10px;
-  font-family: inherit; font-size: .88rem; font-weight: 600;
+  border: 1.5px solid #e8e4d4; border-radius: 9px;
+  font-family: inherit; font-size: .82rem; font-weight: 600;
   cursor: pointer; text-align: left; text-decoration: none;
   transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
   transform: translateZ(0);
 }
-.il-chat-opt:hover,
-.il-chat-opt:focus-visible {
-  background: var(--deep-blue); color: var(--white); border-color: var(--deep-blue);
-  transform: translateX(6px) translateZ(0);
-}
-.il-chat-opt:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
-.il-chat-opt svg { width: 20px; height: 20px; flex-shrink: 0; fill: currentColor; transition: fill 180ms ease; }
+.ilc-btn:hover, .ilc-btn:focus-visible { background: var(--deep-blue); color: var(--white); border-color: var(--deep-blue); transform: translateX(4px) translateZ(0); }
+.ilc-btn:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.ilc-btn svg { width: 18px; height: 18px; flex-shrink: 0; fill: currentColor; }
+.ilc-btn.ilc-book-btn { grid-column: 1/-1; background: var(--red); color: var(--white); border-color: var(--red); }
+.ilc-btn.ilc-book-btn:hover, .ilc-btn.ilc-book-btn:focus-visible { background: #c1222e; border-color: #c1222e; }
 
-.il-chat-opt.il-book {
-  background: var(--red); color: var(--white); border-color: var(--red); margin-top: 4px;
+/* Input row */
+.ilc-input-row { display: flex; gap: 6px; padding: .6rem 1rem .8rem; flex-shrink: 0; }
+.ilc-input {
+  flex: 1; padding: .6rem .9rem; border-radius: 20px;
+  border: 1.5px solid var(--sand-border);
+  background: var(--sand-warm); font-family: inherit; font-size: .86rem;
+  color: var(--text-main); outline: none;
+  transition: border-color 180ms, box-shadow 180ms;
 }
-.il-chat-opt.il-book:hover,
-.il-chat-opt.il-book:focus-visible { background: #c1222e; border-color: #c1222e; color: var(--white); }
-
-.il-chat-foot {
-  padding: .55rem 1rem; border-top: 1px solid #e8e4d4;
-  font-size: .7rem; color: #9aabb8; text-align: center; flex-shrink: 0;
+.ilc-input:focus { border-color: var(--deep-blue); box-shadow: 0 0 0 3px rgba(29,53,87,.08); }
+.ilc-send {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--deep-blue); color: var(--white); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 180ms, transform 180ms;
+  flex-shrink: 0;
 }
+.ilc-send:hover { background: var(--blue-mid); transform: scale(1.08); }
+.ilc-send svg { width: 16px; height: 16px; fill: var(--white); }
 
+/* Footer hint */
+.ilc-foot { padding: .45rem 1rem; border-top: 1px solid #e8e4d4; font-size: .68rem; color: #9aabb8; text-align: center; flex-shrink: 0; }
+
+/* Responsive */
 @media (max-width: 420px) {
-  .il-chat-panel { width: calc(100vw - 24px); right: 12px; bottom: 80px; }
-  .il-chat-toggle { right: 12px; bottom: 14px; }
+  .ilc-panel { width: calc(100vw - 24px); right: 12px; bottom: 80px; }
+  .ilc-toggle { right: 12px; bottom: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .il-chat-panel, .il-chat-opt, .il-chat-toggle, .il-chat-close { transition: none !important; }
-  .il-chat-panel { transform: none !important; }
+  .ilc-panel, .ilc-btn, .ilc-toggle, .ilc-close-btn { transition: none !important; }
+  .ilc-panel { transform: none !important; }
+  .ilc-msg, .ilc-typing span { animation: none !important; }
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 780px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .logo-img { max-height: 44px; }
-}
-@media (max-width: 600px) {
-  .cards { grid-template-columns: 1fr; }
-  .section-wrap { padding: 4rem 1.5rem; }
-  .modal-box { padding: 2rem 1.5rem; }
-  .chat-panel { right: 8px; width: calc(100vw - 16px); }
-  .chat-bubble { right: 12px; bottom: 16px; }
-}
+/* Water backdrop */
+.water-backdrop { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.water-backdrop svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.water-blob { position: absolute; border-radius: 50%; mix-blend-mode: multiply; will-change: transform; }
+.water-blob-1 { width: 80vw; height: 60vh; top: -10%; left: -20%; background: radial-gradient(ellipse, rgba(29,53,87,.04) 0%, transparent 70%); animation: driftA 38s ease-in-out infinite alternate; }
+.water-blob-2 { width: 70vw; height: 80vh; bottom: -15%; right: -15%; background: radial-gradient(ellipse, rgba(15,76,129,.035) 0%, transparent 70%); animation: driftB 45s ease-in-out infinite alternate; }
+.water-blob-3 { width: 50vw; height: 50vh; top: 30%; left: 25%; background: radial-gradient(ellipse, rgba(245,245,220,.055) 0%, transparent 70%); animation: driftC 52s ease-in-out infinite alternate; }
+@keyframes driftA { from { transform: translate(0,0) scale(1); } to { transform: translate(8vw,5vh) scale(1.05); } }
+@keyframes driftB { from { transform: translate(0,0) scale(1); } to { transform: translate(-6vw,-4vh) scale(1.04); } }
+@keyframes driftC { from { transform: translate(0,0) scale(1); } to { transform: translate(4vw,-6vh) scale(1.03); } }
+@media (prefers-reduced-motion: reduce) { .water-blob { animation: none !important; } }
+@media (max-width: 600px) { .water-blob { animation: none !important; } }
 
-/* ══════════════════════════════════════════════
-   WATER BACKDROP ANIMATION
+nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .ilc-panel { position: relative; }
 
-   Technique: A fixed full-viewport SVG layer placed behind all content
-   (z-index: -1, pointer-events: none). It contains two elements:
-   1. An SVG <filter> using feTurbulence + feDisplacementMap that produces
-      an organic, undulating distortion. The turbulence baseFrequency and
-      seed are animated with a very long duration (30-40s) so movement is
-      imperceptibly slow — closer to a long ocean swell than a ripple.
-   2. A set of very low-opacity gradient ellipses that shift position slowly
-      via CSS @keyframes using transform: translate().
-
-   Why it's performant:
-   - The SVG filter is GPU-composited; no JS animation loop needed.
-   - Only opacity and transform are animated (no layout triggers = no repaints).
-   - opacity <= 0.05 ensures it never impairs text legibility.
-   - The whole element is pointer-events: none so it never intercepts clicks.
-
-   Why it's accessible:
-   - @media (prefers-reduced-motion: reduce) completely halts all animation.
-   - On narrow screens (<=600px) the animation is also disabled to reduce
-     battery / GPU load on mobile devices.
-══════════════════════════════════════════════ */
-.water-backdrop {
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none; overflow: hidden;
-  /* behind everything */
-}
-.water-backdrop svg {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-}
-
-/* Soft drifting gradient blobs */
-.water-blob {
-  position: absolute; border-radius: 50%;
-  mix-blend-mode: multiply;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  will-change: transform;
-}
-.water-blob-1 {
-  width: 80vw; height: 60vh;
-  top: -10%; left: -20%;
-  background: radial-gradient(ellipse, rgba(29,53,87,.04) 0%, transparent 70%);
-  animation: driftA 38s ease-in-out infinite alternate;
-}
-.water-blob-2 {
-  width: 70vw; height: 80vh;
-  bottom: -15%; right: -15%;
-  background: radial-gradient(ellipse, rgba(15,76,129,.035) 0%, transparent 70%);
-  animation: driftB 45s ease-in-out infinite alternate;
-}
-.water-blob-3 {
-  width: 50vw; height: 50vh;
-  top: 30%; left: 25%;
-  background: radial-gradient(ellipse, rgba(245,245,220,.055) 0%, transparent 70%);
-  animation: driftC 52s ease-in-out infinite alternate;
-}
-
-@keyframes driftA {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(8vw, 5vh) scale(1.05); }
-}
-@keyframes driftB {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(-6vw, -4vh) scale(1.04); }
-}
-@keyframes driftC {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(4vw, -6vh) scale(1.03); }
-}
-
-/* Disable animation for reduced-motion or small/mobile screens */
-@media (prefers-reduced-motion: reduce) {
-  .water-blob { animation: none !important; }
-  .water-backdrop svg animate,
-  .water-backdrop svg animateTransform { display: none; }
-}
-@media (max-width: 600px) {
-  .water-blob { animation: none !important; }
-}
-
-/* Everything except the water backdrop must sit above it */
-nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
-.chat-bubble, .chat-panel { position: relative; }
+/* Responsive */
+@media (max-width: 900px) { .cards { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 780px) { .nav-links { display: none; } .hamburger { display: flex; } .logo-img { max-height: 44px; } }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr; } .section-wrap { padding: 4rem 1.5rem; } .modal-box { padding: 2rem 1.5rem; } }
 </style>
 <!-- UPDATED STYLES END -->
 </head>
 <body>
 
-<!-- WATER BACKDROP START
-     Layered semi-transparent gradient blobs + SVG turbulence filter.
-     See CSS comment block above for full technique explanation.
--->
+<!-- WATER BACKDROP START -->
 <div class="water-backdrop" aria-hidden="true" role="presentation">
-  <!-- SVG turbulence layer — very low opacity organic shimmer -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-       preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
     <defs>
-      <filter id="waterFilter" x="0%" y="0%" width="100%" height="100%"
-              color-interpolation-filters="sRGB">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.012 0.008"
-          numOctaves="3"
-          seed="8"
-          result="turbOut">
-          <!-- Animate baseFrequency very slowly for a subtle living-water feel -->
-          <animate
-            attributeName="baseFrequency"
-            dur="34s"
-            values="0.012 0.008; 0.014 0.010; 0.012 0.008"
-            repeatCount="indefinite"
-            calcMode="spline"
-            keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
+      <filter id="waterFilter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.008" numOctaves="3" seed="8" result="turbOut">
+          <animate attributeName="baseFrequency" dur="34s" values="0.012 0.008; 0.014 0.010; 0.012 0.008" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
         </feTurbulence>
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="turbOut"
-          scale="14"
-          xChannelSelector="R"
-          yChannelSelector="G"/>
+        <feDisplacementMap in="SourceGraphic" in2="turbOut" scale="14" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
     </defs>
-    <!-- Large very-low-opacity rectangle that receives the water distortion -->
-    <rect width="100%" height="100%"
-          fill="rgba(29,53,87,0.032)"
-          filter="url(#waterFilter)"/>
+    <rect width="100%" height="100%" fill="rgba(29,53,87,0.032)" filter="url(#waterFilter)"/>
   </svg>
-  <!-- CSS-animated gradient blobs (see .water-blob-* rules above) -->
   <div class="water-blob water-blob-1"></div>
   <div class="water-blob water-blob-2"></div>
   <div class="water-blob water-blob-3"></div>
@@ -690,8 +441,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
       <li><a href="#contact">Contact</a></li>
       <li><a href="#contact" class="btn-nav" id="navBookBtn">Book a Lifeguard</a></li>
     </ul>
-    <button class="hamburger" id="menuBtn"
-            aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
+    <button class="hamburger" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -700,19 +450,16 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
   <a href="#services" class="mobile-link">Services</a>
-  <a href="#about"    class="mobile-link">About</a>
-  <a href="#contact"  class="mobile-link">Contact</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#contact" class="mobile-link">Contact</a>
   <a href="#" class="btn-mob mobile-link" id="mobileBookBtn">Book a Lifeguard</a>
 </div>
 
 <!-- HERO IMAGE START -->
-<!-- markus-krisetya photo — full-bleed hero background.
-     .hero-bg is a separate layer so the slow-zoom CSS animation
-     doesn't affect text or the overlay. -->
 <section class="hero" aria-label="Introduction">
-  <!-- Photo layer (animated zoom) -->
-  <div class="hero-bg" role="img" aria-label="Lifeguard watching over a pool"></div>
-  <!-- Overlay layer — deep-blue gradient for text contrast -->
+  <div class="hero-bg" role="presentation" aria-hidden="true"></div>
+  <img src="./assets/markus-krisetya-nhTeowcfacg-unsplash.jpg" alt="" aria-hidden="true" loading="lazy"
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;pointer-events:none;">
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Long Island's Premier Lifeguard Service</div>
@@ -755,20 +502,34 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
 </div>
 
 <!-- ABOUT IMAGE START -->
-<!-- matthew-waring photo — decorative left panel on wide screens,
-     stacked above text on mobile. aria-hidden on the decorative image
-     since the section heading and paragraph carry the meaning. -->
+<!--
+  Landscape background: ./assets/matthew-waring-MJAoiige14E-unsplash.jpg
+  Owner portrait:       ./assets/100_0600.HEIC
+  DEV NOTE: HEIC is not supported by all browsers (Chrome/Firefox may not render it).
+  Convert the file to JPG or PNG (./assets/100_0600.jpg) and update the src attribute below.
+  If the HEIC does not load, the circular portrait gracefully shows a deep-blue gradient background.
+-->
 <div id="about" style="border-top:1px solid var(--sand-border);border-bottom:1px solid var(--sand-border);overflow:hidden;">
   <div class="about-wrap">
-    <!-- Decorative photo panel -->
+    <!-- Landscape decorative photo panel -->
     <div class="about-img-panel">
-      <img src="./matthew-waring-MJAoiige14E-unsplash.jpg"
-           alt="Lifeguard on duty at a pool"
-           loading="lazy"
-           width="800" height="600">
+      <figure style="margin:0;height:100%;">
+        <img src="./assets/matthew-waring-MJAoiige14E-unsplash.jpg"
+             alt="Lifeguard on duty at a pool"
+             loading="lazy"
+             width="800" height="600"
+             style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      </figure>
     </div>
-    <!-- Text panel -->
+    <!-- Text panel with owner portrait -->
     <div class="about-text-panel">
+      <!-- Owner portrait — HEIC file with fallback note -->
+      <!-- DEV NOTE: Convert ./assets/100_0600.HEIC to ./assets/100_0600.jpg if HEIC doesn't render -->
+      <img src="./assets/100_0600.HEIC"
+           alt="Owner portrait"
+           loading="lazy"
+           class="owner-portrait"
+           onerror="this.style.opacity='0'">
       <h2>About Island Lifeguards</h2>
       <p style="max-width:580px;color:var(--text-mid);font-size:1.05rem;line-height:1.85;margin-top:.75rem;">Founded in Dix Hills and rooted in the Long Island community, Island Lifeguards provides certified, professionally trained lifeguard staffing for residential pools, waterfront properties, and private events. Every guard is ARC-certified, background-checked, and experienced in private-event coverage. We serve Nassau and Suffolk County — bringing the same professional standard found at premier aquatic facilities directly to your event.</p>
     </div>
@@ -785,7 +546,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
     <button class="btn-primary" id="contactBookBtn">Request a Booking</button>
     <p style="margin-top:1.6rem;color:rgba(255,255,255,.38);font-size:.82rem;">
       Or reach us directly:
-      <a href="/cdn-cgi/l/email-protection#3b5248575a555f57525d5e5c4e5a495f4858547b5c565a525715585456" style="color:rgba(255,255,255,.62);"><span class="__cf_email__" data-cfemail="b6dfc5dad7d8d2dadfd0d3d1c3d7c4d2c5d5d9f6d1dbd7dfda98d5d9db">[email&#160;protected]</span></a>
+      <a href="mailto:islandlifeguardsco@gmail.com" style="color:rgba(255,255,255,.62);">islandlifeguardsco@gmail.com</a>
     </p>
   </div>
 </section>
@@ -794,18 +555,12 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
 <footer>
   <p style="margin-bottom:1.25rem;">Island Lifeguards — Dix Hills, NY</p>
   <div class="footer-social" role="navigation" aria-label="Island Lifeguards social links">
-    <a class="social-link"
-       href="https://www.instagram.com/islandlifeguards/"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Island Lifeguards on Instagram">
+    <a class="social-link" href="https://www.instagram.com/islandlifeguards/" target="_blank" rel="noopener noreferrer" aria-label="Island Lifeguards on Instagram">
       <svg class="social-icon" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
         <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM18.7 6.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z" fill="currentColor"/>
       </svg>
     </a>
-    <a class="social-link"
-       href="https://www.linkedin.com/company/island-lifeguards"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Island Lifeguards on LinkedIn">
+    <a class="social-link" href="https://www.linkedin.com/company/island-lifeguards" target="_blank" rel="noopener noreferrer" aria-label="Island Lifeguards on LinkedIn">
       <svg class="social-icon" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
         <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5v13H0v-13zM8.5 8.5h4.8v1.8h.1c.7-1.3 2.4-2.7 5-2.7 5.3 0 6.3 3.5 6.3 8v6.9h-5v-6.1c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4v6.2h-5V8.5z" fill="currentColor"/>
       </svg>
@@ -815,8 +570,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
 </footer>
 
 <!-- BOOKING MODAL START -->
-<div class="modal-overlay" id="bookingModal"
-     role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+<div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
   <div class="modal-box">
     <button class="modal-close" id="modalClose" aria-label="Close booking form">&times;</button>
     <div id="formView">
@@ -843,8 +597,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
     <div id="confirmView" style="display:none;" aria-live="polite">
       <div class="confirm-wrap">
         <div class="confirm-check" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none"
-               stroke="#2e7d32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#2e7d32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         </div>
@@ -852,7 +605,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
         <p>Thanks &mdash; we'll send you a Google Form to finalize the booking.</p>
         <p class="note">
           A follow-up will be sent from
-          <a href="/cdn-cgi/l/email-protection#721b011e131c161e1b1417150713001601111d32151f131b1e5c111d1f"><span class="__cf_email__" data-cfemail="365f455a5758525a5f5053514357445245555976515b575f5a1855595b">[email&#160;protected]</span></a>
+          <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
         </p>
       </div>
     </div>
@@ -862,137 +615,96 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
 
 <!-- CHATBOT WIDGET START -->
 <!--
-  Scoped under .il-chat prefix to avoid collisions.
-  Uses CSS visibility+opacity+transform transitions (not display:none toggle)
-  so open/close can animate in both directions.
-  Focus trap cycles Tab/Shift+Tab through all .il-chat-focusable elements.
-  Esc closes panel and restores focus to toggle.
-  prefers-reduced-motion: all transitions disabled; panel shows/hides instantly.
+  Scoped under .ilc- prefix. No external API calls — all responses are scripted.
+  EDITING RESPONSES: Find the `ilcResponses` object in the <script> block below.
+  Each key is an intent name; value is an array of reply strings (picked randomly).
+  Add new intents by adding a new key + array, then add keyword matches in `ilcMatch()`.
 -->
-
-<!-- Panel (role=dialog, aria-modal, focus managed by JS) -->
-<div id="ilChatPanel"
-     class="il-chat-panel"
-     role="dialog"
-     aria-modal="true"
-     aria-label="Island Lifeguards quick actions"
+<div id="ilcPanel" class="ilc-panel"
+     role="dialog" aria-modal="true"
+     aria-label="Island Lifeguards chat assistant"
      aria-hidden="true">
 
   <!-- Header -->
-  <div class="il-chat-head">
-    <div class="il-chat-head-left">
-      <div class="il-chat-avatar" aria-hidden="true">
-        <!-- Lifeguard/person icon -->
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/>
-        </svg>
+  <div class="ilc-head">
+    <div class="ilc-head-left">
+      <div class="ilc-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
       </div>
       <div>
-        <div class="il-chat-title">Island Lifeguards</div>
-        <div class="il-chat-sub">Hi &mdash; quick links and booking.</div>
+        <div class="ilc-title">Island Lifeguards</div>
+        <div class="ilc-sub">Ask me anything &mdash; or use quick links below.</div>
       </div>
     </div>
-    <!-- Close button — first focusable element inside panel -->
-    <button class="il-chat-close il-chat-focusable"
-            id="ilChatClose"
-            aria-label="Close assistant panel">
-      <!-- X icon -->
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6"  y1="6" x2="18" y2="18"/>
-      </svg>
+    <button class="ilc-close-btn" id="ilcClose" aria-label="Close chat panel">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
 
-  <!-- Options list — aria-live so screen readers hear dynamic messages -->
-  <div class="il-chat-options" aria-live="polite" role="list">
+  <!-- Message area with aria-live so screen readers announce new messages -->
+  <div class="ilc-messages" id="ilcMessages" aria-live="polite" aria-label="Chat messages"></div>
 
-    <!-- About -->
-    <button class="il-chat-opt il-chat-focusable"
-            data-il-action="about"
-            aria-label="Scroll to About section">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2zm0 9a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 11zm-1 2v5h2v-5h-2z"/>
-      </svg>
-      About Us
-    </button>
-
-    <!-- Contact -->
-    <button class="il-chat-opt il-chat-focusable"
-            data-il-action="contact"
-            aria-label="Scroll to Contact section">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-      </svg>
-      Contact
-    </button>
-
-    <!-- Instagram -->
-    <a class="il-chat-opt il-chat-focusable"
-       href="https://www.instagram.com/islandlifeguards/"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Island Lifeguards on Instagram (opens in new tab)">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM18.7 6.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/>
-      </svg>
-      Instagram
-    </a>
-
-    <!-- LinkedIn -->
-    <a class="il-chat-opt il-chat-focusable"
-       href="https://www.linkedin.com/company/island-lifeguards"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Island Lifeguards on LinkedIn (opens in new tab)">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5v13H0v-13zM8.5 8.5h4.8v1.8h.1c.7-1.3 2.4-2.7 5-2.7 5.3 0 6.3 3.5 6.3 8v6.9h-5v-6.1c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4v6.2h-5V8.5z"/>
-      </svg>
-      LinkedIn
-    </a>
-
-    <!-- Email -->
-    <a class="il-chat-opt il-chat-focusable" href="/cdn-cgi/l/email-protection#f39a809f929d979f9a9596948692819780909cb3949e929a9fdd909c9e" aria-label="Email Island Lifeguards">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-      </svg>
-      Email Us
-    </a>
-
-    <!-- Book CTA -->
-    <button class="il-chat-opt il-book il-chat-focusable"
-            data-il-action="book"
-            aria-label="Open booking form">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12zm0-14H5V5h1v2h2V5h8v2h2V5h1v2z"/>
-      </svg>
+  <!-- Quick action buttons -->
+  <div class="ilc-actions">
+    <div class="ilc-action-grid">
+      <button class="ilc-btn" data-ilc="about" aria-label="Go to About section">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2zm0 9a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 11zm-1 2v5h2v-5h-2z"/></svg>
+        About Us
+      </button>
+      <button class="ilc-btn" data-ilc="contact" aria-label="Go to Contact section">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Contact
+      </button>
+      <a class="ilc-btn" href="https://www.instagram.com/islandlifeguards/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in new tab)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM18.7 6.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg>
+        Instagram
+      </a>
+      <a class="ilc-btn" href="https://www.linkedin.com/company/island-lifeguards" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5v13H0v-13zM8.5 8.5h4.8v1.8h.1c.7-1.3 2.4-2.7 5-2.7 5.3 0 6.3 3.5 6.3 8v6.9h-5v-6.1c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4v6.2h-5V8.5z"/></svg>
+        LinkedIn
+      </a>
+      <a class="ilc-btn" href="mailto:islandlifeguardsco@gmail.com" aria-label="Email Island Lifeguards">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email Us
+      </a>
+      <button class="ilc-btn" data-ilc="faq" aria-label="See frequently asked questions">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2zm1 14h-2v2h2v-2zm0-2c0-2.08 2-2.4 2-4.5 0-1.93-1.57-3.5-3.5-3.5S8 7.57 8 9.5h2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5c0 2-2 2.3-2 4.5h2z"/></svg>
+        FAQ
+      </button>
+    </div>
+    <!-- Book CTA — full width, red accent -->
+    <button class="ilc-btn ilc-book-btn" data-ilc="book" aria-label="Open booking form">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12zm0-14H5V5h1v2h2V5h8v2h2V5h1v2z"/></svg>
       Book a Lifeguard
     </button>
-
   </div>
 
-  <!-- Accessibility hint footer -->
-  <!-- Last focusable element for focus trap wrap-around -->
-  <div class="il-chat-foot" aria-hidden="true">
-    Press <kbd>Esc</kbd> to close &nbsp;&bull;&nbsp; <kbd>Tab</kbd> to navigate
+  <!-- Text input row -->
+  <div class="ilc-input-row">
+    <input class="ilc-input" id="ilcInput" type="text"
+           placeholder="Type a question…"
+           aria-label="Type your question here"
+           autocomplete="off" maxlength="200">
+    <button class="ilc-send" id="ilcSend" aria-label="Send message">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+    </button>
   </div>
 
+  <div class="ilc-foot" aria-hidden="true">Press <kbd>Esc</kbd> to close &nbsp;&bull;&nbsp; <kbd>Tab</kbd> to navigate</div>
 </div>
 
 <!-- Toggle button -->
-<button class="il-chat-toggle"
-        id="ilChatToggle"
-        aria-label="Open Island Lifeguards assistant"
-        aria-haspopup="dialog"
-        aria-expanded="false"
-        aria-controls="ilChatPanel">
-  <!-- Chat bubble icon -->
-  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-    <path d="M20 2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h3l3 3 3-3h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-2 10H6v-2h12v2zm0-4H6V6h12v2z"/>
-  </svg>
+<button class="ilc-toggle" id="ilcToggle"
+        aria-label="Open Island Lifeguards chat assistant"
+        aria-haspopup="dialog" aria-expanded="false" aria-controls="ilcPanel">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h3l3 3 3-3h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-2 10H6v-2h12v2zm0-4H6V6h12v2z"/></svg>
 </button>
 <!-- CHATBOT WIDGET END -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* MOBILE NAV */
+<script>
+/* ════════════════════════════════════════════
+   MOBILE NAV
+════════════════════════════════════════════ */
 const menuBtn    = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 menuBtn.addEventListener('click', () => {
@@ -1008,14 +720,18 @@ mobileMenu.querySelectorAll('a').forEach(a => {
   });
 });
 
-/* BOOKING MODAL */
+/* ════════════════════════════════════════════
+   BOOKING MODAL
+════════════════════════════════════════════ */
 const modal       = document.getElementById('bookingModal');
 const modalClose  = document.getElementById('modalClose');
 const bookingForm = document.getElementById('bookingForm');
 const formView    = document.getElementById('formView');
 const confirmView = document.getElementById('confirmView');
+let   _lastModalTrigger = null;
 
-function openModal() {
+function openModal(triggerEl) {
+  _lastModalTrigger = triggerEl || document.activeElement;
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
   setTimeout(() => modalClose.focus(), 60);
@@ -1027,11 +743,12 @@ function closeModal() {
   formView.style.display = '';
   confirmView.style.display = 'none';
   document.querySelectorAll('.err').forEach(e => e.style.display = 'none');
+  if (_lastModalTrigger) { _lastModalTrigger.focus(); _lastModalTrigger = null; }
 }
 
 ['heroBookBtn','contactBookBtn','navBookBtn','mobileBookBtn'].forEach(id => {
   const el = document.getElementById(id);
-  if (el) el.addEventListener('click', e => { e.preventDefault(); openModal(); });
+  if (el) el.addEventListener('click', e => { e.preventDefault(); openModal(el); });
 });
 modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
@@ -1040,9 +757,7 @@ document.addEventListener('keydown', e => {
 });
 modal.addEventListener('keydown', e => {
   if (e.key !== 'Tab') return;
-  const els = [...modal.querySelectorAll(
-    'button:not([disabled]),input,textarea,a[href]'
-  )].filter(el => el.offsetParent !== null);
+  const els = [...modal.querySelectorAll('button:not([disabled]),input,textarea,a[href]')].filter(el => el.offsetParent !== null);
   const first = els[0], last = els[els.length - 1];
   if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
   else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
@@ -1062,67 +777,194 @@ bookingForm.addEventListener('submit', e => {
   confirmView.style.display = 'block';
 });
 
-/* ══════════════════════════════════
-   CHATBOT WIDGET — scoped to .il-chat / #ilChat*
-   Key features:
-   - CSS visibility+opacity+transform transitions (no display:none flip)
-     so both open AND close can animate.
-   - Focus trap: Tab/Shift+Tab cycle only through .il-chat-focusable elements.
-   - Esc binding: closes panel and restores focus to toggle.
-   - Integrates with existing openModal() for booking.
-══════════════════════════════════ */
-(function() {
-  const toggle    = document.getElementById('ilChatToggle');
-  const panel     = document.getElementById('ilChatPanel');
-  const closeBtn  = document.getElementById('ilChatClose');
+/* ════════════════════════════════════════════
+   CHATBOT WIDGET
+   All responses are scripted — no network calls.
 
+   TO EDIT RESPONSES:
+   Find `ilcResponses` below. Each key = intent name.
+   Each value = array of strings (one is picked randomly on each reply).
+   Add new intents here, then add matching keywords in `ilcMatch()`.
+
+   TO ADD A NEW INTENT:
+   1. Add entry to ilcResponses: myIntent: ["reply A","reply B","reply C"]
+   2. Add keyword check in ilcMatch(): if (has('keyword1','keyword2')) return 'myIntent';
+════════════════════════════════════════════ */
+(function() {
+
+  /* ── Scripted responses — edit these freely ── */
+  const ilcResponses = {
+    greeting:  ["Hey! How can I help you today?", "Hi there! What can I do for you?", "Hello! Ask me anything about our services."],
+    pool:      ["We staff residential and HOA pools all over Long Island — just let us know your date and zip.", "Pool lifeguarding is our specialty. Drop us your event details and we'll send a quote.", "Absolutely — pool coverage for private and community pools. Ready to book? Hit the Book button below."],
+    beach:     ["Yes — we cover beaches and open-water venues. Our guards are trained in surf and tidal conditions.", "Beach and waterfront events are fully covered. Tell us your location and we'll sort out staffing.", "Open-water experience is a must for us. Share your event details and we'll get you staffed."],
+    events:    ["Yes, we staff pools, beaches, and events of all sizes. Tell me the date and I can open a booking form.", "Event safety is a core service — we do pre-event assessments too. Want to request a quote?", "From backyard parties to large waterfront events, we've got you covered. Ready to book?"],
+    pricing:   ["Pricing varies by hours, location, and guard count — share your zip and date and we'll follow up with a quote.", "We'll send a custom quote once we know your event details. Hit Book below to get started.", "Great question — rates depend on the event. Give us the basics and we'll reach out within a business day."],
+    certified: ["Every guard is ARC-certified and background-checked. Happy to share details once you request a quote.", "Certified and experienced — that's our standard for every guard on every job.", "Yes — all our lifeguards hold current ARC certifications and pass background checks."],
+    insured:   ["All guards are certified and professionally vetted. We'll email full details once you request a quote.", "Yes — our guards are certified and background-checked. Insurance details available upon request.", "Professionally certified and vetted. Reach out via email for full credentials."],
+    hours:     ["Typically we're available 7 days a week from early morning to evening. Reach out for specific availability.", "Availability varies by season — contact us at islandlifeguardsco@gmail.com for current openings.", "We work around your schedule. Email us or hit Book to check availability."],
+    contact:   ["You can email us at islandlifeguardsco@gmail.com or use the Contact section below.", "Easiest way is email: islandlifeguardsco@gmail.com — or scroll down to the Contact form.", "Drop us a line at islandlifeguardsco@gmail.com and we'll get back within one business day."],
+    owner:     ["That's the owner — rooted right here in Dix Hills. You can see a photo in the About section.", "The owner is local to Long Island — check out the About section for a photo and more info.", "Island Lifeguards is owner-operated, based in Dix Hills, NY. Scroll to About to learn more."],
+    faq:       ["Common questions: Are guards certified? Yes, ARC-certified. Pricing? Custom quote. Availability? 7 days. Need more? Just ask.", "FAQ: We cover pools, beaches, events. All guards are certified + background-checked. Pricing by request.", "Top questions: availability (7 days/week), certifications (ARC), service area (Nassau + Suffolk County)."],
+    fallback:  ["I'm not sure I caught that — try asking about services, pricing, or booking, or use the quick links below.", "Hmm, let me redirect you — check the quick links below or type: pricing, services, or book.", "I didn't quite get that. Try: 'pool', 'beach', 'events', 'pricing', or 'book'."],
+  };
+
+  /* ── Keyword matcher — returns an intent key ──
+     HOW TO EDIT: add new `if (has('keyword'))` blocks returning your intent name */
+  function ilcMatch(txt) {
+    const t = txt.toLowerCase();
+    const has = (...words) => words.some(w => t.includes(w));
+    if (has('hi','hello','hey','howdy','sup'))                          return 'greeting';
+    if (has('pool','swim','residential','hoa'))                         return 'pool';
+    if (has('beach','ocean','water','surf','open water','waterfront'))  return 'beach';
+    if (has('event','party','gathering','wedding','birthday'))          return 'events';
+    if (has('price','cost','rate','how much','quote','fee'))            return 'pricing';
+    if (has('certif','arc','trained','qualified','license'))            return 'certified';
+    if (has('insur','covered','liab'))                                  return 'insured';
+    if (has('hour','schedul','availab','when','open','time'))           return 'hours';
+    if (has('contact','email','reach','phone','call'))                  return 'contact';
+    if (has('owner','who','local','dix hills','speaking'))              return 'owner';
+    if (has('faq','question','wonder','curious'))                       return 'faq';
+    if (has('book','reserv','appoint','schedule','hire'))               return 'booking_prompt';
+    return 'fallback';
+  }
+
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  /* ── DOM refs ── */
+  const toggle   = document.getElementById('ilcToggle');
+  const panel    = document.getElementById('ilcPanel');
+  const closeBtn = document.getElementById('ilcClose');
+  const messages = document.getElementById('ilcMessages');
+  const input    = document.getElementById('ilcInput');
+  const sendBtn  = document.getElementById('ilcSend');
+  let greeted = false;
+
+  /* ── Focus management ── */
   function getFocusable() {
-    return [...panel.querySelectorAll('.il-chat-focusable')]
-      .filter(el => !el.disabled && el.offsetParent !== null);
+    return [...panel.querySelectorAll('button:not([disabled]),input,a[href],[tabindex]:not([tabindex="-1"])')].filter(el => el.offsetParent !== null);
   }
 
   function openPanel() {
-    panel.classList.add('il-open');
+    panel.classList.add('ilc-open');
     panel.setAttribute('aria-hidden', 'false');
     toggle.setAttribute('aria-expanded', 'true');
-    // Move focus to first focusable element inside panel (close button)
-    const focusable = getFocusable();
-    if (focusable.length) setTimeout(() => focusable[0].focus(), 50);
+    setTimeout(() => { (input || getFocusable()[0] || closeBtn).focus(); }, 60);
+    if (!greeted) {
+      greeted = true;
+      setTimeout(() => addBotMsg(pick(ilcResponses.greeting)), 400);
+    }
   }
 
   function closePanel() {
-    panel.classList.remove('il-open');
+    panel.classList.remove('ilc-open');
     panel.setAttribute('aria-hidden', 'true');
     toggle.setAttribute('aria-expanded', 'false');
-    // Restore focus to toggle button
     toggle.focus();
   }
 
-  toggle.addEventListener('click', () => {
-    panel.classList.contains('il-open') ? closePanel() : openPanel();
-  });
-
+  toggle.addEventListener('click', () => panel.classList.contains('ilc-open') ? closePanel() : openPanel());
   closeBtn.addEventListener('click', closePanel);
 
-  // Esc closes panel
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && panel.classList.contains('il-open')) {
-      e.preventDefault();
-      closePanel();
-    }
-  });
-
-  // Focus trap — Tab and Shift+Tab cycle within panel
+  /* Esc closes panel (and doesn't bubble to close modal) */
   panel.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.stopPropagation(); closePanel(); return; }
     if (e.key !== 'Tab') return;
     const focusable = getFocusable();
     if (!focusable.length) return;
     const first = focusable[0], last = focusable[focusable.length - 1];
-    if (e.shiftKey) {
-      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-    } else {
-      if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
-    }
+    if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+    else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
   });
 
-  // Close on backdrop click (click outside panel a
+  /* Close on outside click */
+  document.addEventListener('click', e => {
+    if (!panel.classList.contains('ilc-open')) return;
+    if (!panel.contains(e.target) && !toggle.contains(e.target)) closePanel();
+  });
+
+  /* ── Message rendering ── */
+  function addMsg(text, role) {
+    const div = document.createElement('div');
+    div.className = 'ilc-msg ' + role;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+  function addBotMsg(text) { addMsg(text, 'bot'); }
+  function addUserMsg(text) { addMsg(text, 'user'); }
+
+  /* Typing indicator — shows animated dots then resolves with reply */
+  function botReply(text, delay) {
+    delay = delay || (300 + Math.random() * 300);
+    const dots = document.createElement('div');
+    dots.className = 'ilc-typing ilc-msg';
+    dots.innerHTML = '<span></span><span></span><span></span>';
+    messages.appendChild(dots);
+    messages.scrollTop = messages.scrollHeight;
+    setTimeout(() => {
+      dots.remove();
+      addBotMsg(text);
+      /* If reply references booking, show a subtle "Open booking form" prompt */
+    }, delay);
+  }
+
+  /* ── Quick-action button handler ── */
+  panel.querySelectorAll('[data-ilc]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.ilc;
+      if (action === 'about') {
+        closePanel();
+        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'contact') {
+        closePanel();
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      } else if (action === 'book') {
+        closePanel();
+        openModal(toggle);
+      } else if (action === 'faq') {
+        /* Show FAQ inline in chat */
+        openPanel();
+        botReply(pick(ilcResponses.faq));
+      }
+    });
+  });
+
+  /* ── Text input handler ── */
+  function handleSend() {
+    const text = input.value.trim();
+    if (!text) return;
+    addUserMsg(text);
+    input.value = '';
+    const intent = ilcMatch(text);
+    let reply;
+    if (intent === 'booking_prompt') {
+      /* Special case: prompt to open booking modal */
+      reply = pick(["Sure — let me open the booking form for you!", "On it — opening the booking form now!", "Great, let's get you booked!"]);
+      botReply(reply, 350);
+      setTimeout(() => { closePanel(); openModal(toggle); }, 950);
+    } else if (intent === 'owner') {
+      reply = pick(ilcResponses.owner);
+      botReply(reply, 400);
+      /* Follow-up button to scroll to about */
+      setTimeout(() => {
+        const b = document.createElement('button');
+        b.className = 'ilc-btn'; b.style.cssText = 'margin:.25rem 0;font-size:.8rem;';
+        b.setAttribute('aria-label', 'Scroll to About section and view owner photo');
+        b.textContent = '📸 View owner photo';
+        b.addEventListener('click', () => { closePanel(); document.getElementById('about').scrollIntoView({ behavior:'smooth' }); });
+        messages.appendChild(b);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500 + 400);
+    } else {
+      reply = pick(ilcResponses[intent] || ilcResponses.fallback);
+      botReply(reply);
+    }
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); handleSend(); } });
+
+})();
+</script>
+</body>
+</html>
