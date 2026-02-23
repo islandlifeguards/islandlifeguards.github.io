@@ -403,8 +403,117 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
 @media (max-width: 780px) { .nav-links { display: none; } .hamburger { display: flex; } .logo-img { max-height: 44px; } }
 @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } .section-wrap { padding: 4rem 1.5rem; } .modal-box { padding: 2rem 1.5rem; } }
 </style>
-<!-- UPDATED STYLES END -->
-</head>
+
+<!-- ADDITION START: Fix chatbot position — force fixed bottom-right, overriding the broad nav/div/footer selector -->
+<style>
+/* The rule "nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .ilc-panel { position: relative; }"
+   above was overriding position:fixed on the chatbot. These rules restore the correct fixed positioning. */
+.ilc-toggle {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  left: auto !important;
+}
+.ilc-panel {
+  position: fixed !important;
+  bottom: 88px !important;
+  right: 20px !important;
+  left: auto !important;
+}
+@media (max-width: 420px) {
+  .ilc-panel  { right: 12px !important; bottom: 80px !important; left: auto !important; }
+  .ilc-toggle { right: 12px !important; bottom: 14px !important; left: auto !important; }
+}
+</style>
+<!-- ADDITION END: Fix chatbot position — force fixed bottom-right, overriding the broad nav/div/footer selector -->
+<style>
+/* ── Override hero-bg to use root-relative path (images are in repo root, not /assets/) ── */
+.hero-bg {
+  background-image: url('./markus-krisetya-nhTeowcfacg-unsplash.jpg') !important;
+}
+
+/* ── Services section image accent band ── */
+.services-img-band {
+  position: absolute;
+  inset: 0;
+  background-image: url('./matthew-waring-MJAoiige14E-unsplash.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Ensure services content sits above the band */
+#services > .section-wrap { position: relative; z-index: 1; }
+#services { position: relative; overflow: hidden; }
+
+/* ── Founder profile block ── */
+.founder-profile {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--sand-border);
+}
+.founder-photo-wrap {
+  position: relative;
+  width: 160px;
+  flex-shrink: 0;
+}
+.founder-photo {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 4px 20px rgba(29,53,87,.14);
+  border: 2px solid var(--sand-border);
+  /* Graceful fallback gradient if HEIC doesn't load in all browsers */
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--blue-mid) 100%);
+}
+.founder-text { display: flex; flex-direction: column; justify-content: flex-start; }
+.founder-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  color: var(--deep-blue);
+  margin-bottom: .25rem;
+  font-weight: 700;
+}
+.founder-role {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.founder-bio {
+  color: var(--text-mid);
+  font-size: .97rem;
+  line-height: 1.8;
+  max-width: 560px;
+}
+@media (max-width: 680px) {
+  .founder-profile {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  .founder-photo-wrap { width: 100%; }
+  .founder-photo {
+    width: 120px;
+    height: 150px;
+    border-radius: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-img-band { animation: none !important; }
+}
+</style>
+<!-- ADDITION END: CSS for hero root-path override, services image band, founder profile -->
 <body>
 
 <!-- WATER BACKDROP START -->
@@ -458,13 +567,15 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
 <!-- HERO IMAGE START -->
 <section class="hero" aria-label="Introduction">
   <div class="hero-bg" role="presentation" aria-hidden="true"></div>
-  <img src="./assets/markus-krisetya-nhTeowcfacg-unsplash.jpg" alt="" aria-hidden="true" loading="lazy"
+<!-- ADDITION START: Hero fallback img root-path fix — file is ./markus-krisetya-nhTeowcfacg-unsplash.jpg in repo root -->
+  <img src="./markus-krisetya-nhTeowcfacg-unsplash.jpg" alt="" aria-hidden="true" loading="lazy"
        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;pointer-events:none;">
+<!-- ADDITION END: Hero fallback img root-path fix -->
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Long Island's Premier Lifeguard Service</div>
     <h1>You Do the Fun.<br>We'll Do the Safety.</h1>
-    <p>Professional lifeguard staffing serving Dix Hills and all of Long Island.</p>
+    <p>Professional Private Lifeguard Coverage serving Dix Hills and all of Long Island.</p>
     <button class="btn-primary" id="heroBookBtn">Book a Lifeguard</button>
   </div>
 </section>
@@ -472,6 +583,16 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
 
 <!-- SERVICES -->
 <div id="services" style="background:var(--white);">
+
+<!-- ADDITION START: Services section decorative image band -->
+<!--
+  matthew-waring-MJAoiige14E-unsplash.jpg used as a very-low-opacity background accent.
+  File is in repo root: ./matthew-waring-MJAoiige14E-unsplash.jpg
+  opacity: 0.07 ensures it is aesthetic only — does not distract from cards or text.
+  z-index layering keeps all card content fully above it.
+-->
+<div class="services-img-band" aria-hidden="true" role="presentation"></div>
+<!-- ADDITION END: Services section decorative image band -->
   <div class="section-wrap">
     <h2>Our Services</h2>
     <p class="section-sub">Certified coverage for every aquatic environment — residential, waterfront, or event.</p>
@@ -531,7 +652,32 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
            class="owner-portrait"
            onerror="this.style.opacity='0'">
       <h2>About Island Lifeguards</h2>
-      <p style="max-width:580px;color:var(--text-mid);font-size:1.05rem;line-height:1.85;margin-top:.75rem;">Founded in Dix Hills and rooted in the Long Island community, Island Lifeguards provides certified, professionally trained lifeguard staffing for residential pools, waterfront properties, and private events. Every guard is ARC-certified, background-checked, and experienced in private-event coverage. We serve Nassau and Suffolk County — bringing the same professional standard found at premier aquatic facilities directly to your event.</p>
+      <p style="max-width:580px;color:var(--text-mid);font-size:1.05rem;line-height:1.85;margin-top:.75rem;">Founded in Dix Hills and rooted in the Long Island community, Island Lifeguards provides certified, professionally trained Private Lifeguard Coverage for residential pools, waterfront properties, and private events. Every guard is ARC-certified, background-checked, and experienced in private-event coverage. We serve Nassau and Suffolk County — bringing the same professional standard found at premier aquatic facilities directly to your event.</p>
+
+<!-- ADDITION START: Founder profile block -->
+<!--
+  Owner photo: ./100_0600.HEIC (root of repo)
+  DEV NOTE: If HEIC does not display in all browsers (Chrome/Firefox may not render HEIC natively),
+  convert to JPG/PNG (e.g., ./100_0600.jpg) and update the src attribute on .founder-photo below.
+  The element has a deep-blue gradient CSS background as a graceful fallback if the image fails to load.
+  Layout: image left, text right on desktop; stacked on mobile (<680px).
+-->
+<div class="founder-profile">
+  <div class="founder-photo-wrap">
+    <img
+      src="./100_0600.HEIC"
+      alt="Isaac Saia-Gluck, Founder of Island Lifeguards"
+      loading="lazy"
+      class="founder-photo"
+      onerror="this.style.opacity='0.12';">
+  </div>
+  <div class="founder-text">
+    <div class="founder-name">Isaac Saia-Gluck</div>
+    <div class="founder-role">Founder &amp; Operational Manager</div>
+    <p class="founder-bio">Isaac Saia-Gluck is the Founder and Operational Manager of Island Lifeguards, bringing eight years of lifeguarding and swim instruction experience to every assignment. Certified and trained through the American Red Cross, he has spent years providing private lifeguard coverage for parties and events across Long Island. As an Industrial Engineering major at Hofstra University, Isaac applies a systems-oriented approach to scheduling, safety planning, and operational logistics. Alongside his sister, Mikaela Gluck, he co-leads Island Lifeguards with a focus on reliable coverage, consistent safety standards, and professional service throughout Dix Hills and Long Island.</p>
+  </div>
+</div>
+<!-- ADDITION END: Founder profile block -->
     </div>
   </div>
 </div>
@@ -546,7 +692,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
     <button class="btn-primary" id="contactBookBtn">Request a Booking</button>
     <p style="margin-top:1.6rem;color:rgba(255,255,255,.38);font-size:.82rem;">
       Or reach us directly:
-      <a href="mailto:islandlifeguardsco@gmail.com" style="color:rgba(255,255,255,.62);">islandlifeguardsco@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#375e445b5659535b5e5152504256455344545877505a565e5b1954585a" style="color:rgba(255,255,255,.62);"><span class="__cf_email__" data-cfemail="335a405f525d575f5a5556544652415740505c73545e525a5f1d505c5e">[email&#160;protected]</span></a>
     </p>
   </div>
 </section>
@@ -605,7 +751,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
         <p>Thanks &mdash; we'll send you a Google Form to finalize the booking.</p>
         <p class="note">
           A follow-up will be sent from
-          <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#99f0eaf5f8f7fdf5f0fffcfeecf8ebfdeafaf6d9fef4f8f0f5b7faf6f4"><span class="__cf_email__" data-cfemail="543d2738353a30383d3231332135263027373b143339353d387a373b39">[email&#160;protected]</span></a>
         </p>
       </div>
     </div>
@@ -663,7 +809,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5v13H0v-13zM8.5 8.5h4.8v1.8h.1c.7-1.3 2.4-2.7 5-2.7 5.3 0 6.3 3.5 6.3 8v6.9h-5v-6.1c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4v6.2h-5V8.5z"/></svg>
         LinkedIn
       </a>
-      <a class="ilc-btn" href="mailto:islandlifeguardsco@gmail.com" aria-label="Email Island Lifeguards">
+      <a class="ilc-btn" href="/cdn-cgi/l/email-protection#dcb5afb0bdb2b8b0b5bab9bba9bdaeb8afbfb39cbbb1bdb5b0f2bfb3b1" aria-label="Email Island Lifeguards">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         Email Us
       </a>
@@ -701,7 +847,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
 </button>
 <!-- CHATBOT WIDGET END -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ════════════════════════════════════════════
    MOBILE NAV
 ════════════════════════════════════════════ */
@@ -796,7 +942,7 @@ bookingForm.addEventListener('submit', e => {
   const ilcResponses = {
     greeting:  ["Hey! How can I help you today?", "Hi there! What can I do for you?", "Hello! Ask me anything about our services."],
     pool:      ["We staff residential and HOA pools all over Long Island — just let us know your date and zip.", "Pool lifeguarding is our specialty. Drop us your event details and we'll send a quote.", "Absolutely — pool coverage for private and community pools. Ready to book? Hit the Book button below."],
-    beach:     ["Yes — we cover beaches and open-water venues. Our guards are trained in surf and tidal conditions.", "Beach and waterfront events are fully covered. Tell us your location and we'll sort out staffing.", "Open-water experience is a must for us. Share your event details and we'll get you staffed."],
+    beach:     ["Yes — we cover beaches and open-water venues. Our guards are trained in surf and tidal conditions.", "Beach and waterfront events are fully covered. Tell us your location and we'll sort out Private Lifeguard Coverage.", "Open-water experience is a must for us. Share your event details and we'll get you staffed."],
     events:    ["Yes, we staff pools, beaches, and events of all sizes. Tell me the date and I can open a booking form.", "Event safety is a core service — we do pre-event assessments too. Want to request a quote?", "From backyard parties to large waterfront events, we've got you covered. Ready to book?"],
     pricing:   ["Pricing varies by hours, location, and guard count — share your zip and date and we'll follow up with a quote.", "We'll send a custom quote once we know your event details. Hit Book below to get started.", "Great question — rates depend on the event. Give us the basics and we'll reach out within a business day."],
     certified: ["Every guard is ARC-certified and background-checked. Happy to share details once you request a quote.", "Certified and experienced — that's our standard for every guard on every job.", "Yes — all our lifeguards hold current ARC certifications and pass background checks."],
@@ -951,20 +1097,4 @@ bookingForm.addEventListener('submit', e => {
         b.className = 'ilc-btn'; b.style.cssText = 'margin:.25rem 0;font-size:.8rem;';
         b.setAttribute('aria-label', 'Scroll to About section and view owner photo');
         b.textContent = '📸 View owner photo';
-        b.addEventListener('click', () => { closePanel(); document.getElementById('about').scrollIntoView({ behavior:'smooth' }); });
-        messages.appendChild(b);
-        messages.scrollTop = messages.scrollHeight;
-      }, 500 + 400);
-    } else {
-      reply = pick(ilcResponses[intent] || ilcResponses.fallback);
-      botReply(reply);
-    }
-  }
-
-  sendBtn.addEventListener('click', handleSend);
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); handleSend(); } });
-
-})();
-</script>
-</body>
-</html>
+        b.addEventListener('click', () => { closePanel(); document.getElementBy
