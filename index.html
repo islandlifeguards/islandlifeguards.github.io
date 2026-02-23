@@ -641,6 +641,16 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
              width="800" height="600"
              style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
       </figure>
+<!-- ADDITION START: About panel image root-path fallback -->
+<!-- Dev note: image also referenced at ./matthew-waring-MJAoiige14E-unsplash.jpg in repo root -->
+      <figure style="margin:0;height:100%;position:absolute;inset:0;z-index:-1;" aria-hidden="true">
+        <img src="./matthew-waring-MJAoiige14E-unsplash.jpg"
+             alt=""
+             aria-hidden="true"
+             loading="lazy"
+             style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0;">
+      </figure>
+<!-- ADDITION END: About panel image root-path fallback -->
     </div>
     <!-- Text panel with owner portrait -->
     <div class="about-text-panel">
@@ -670,6 +680,20 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
       loading="lazy"
       class="founder-photo"
       onerror="this.style.opacity='0.12';">
+<!-- ADDITION START: About founder photo JPG -->
+<!--
+  Dev note: if the JPG is unavailable, convert HEIC to JPG/PNG and place at ./100_0600.jpg
+  Using ./100_0600.jpg as primary source; HEIC above is the legacy fallback.
+  object-fit:cover, rounded corners, box-shadow already defined in .founder-photo CSS.
+-->
+    <img
+      src="./100_0600.jpg"
+      alt="Isaac Saia-Gluck, Founder portrait"
+      loading="lazy"
+      class="founder-photo"
+      style="position:absolute;inset:0;"
+      onerror="this.style.display='none';">
+<!-- ADDITION END: About founder photo JPG -->
   </div>
   <div class="founder-text">
     <div class="founder-name">Isaac Saia-Gluck</div>
@@ -690,10 +714,16 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
     <h2 style="color:var(--white);">Book a Lifeguard</h2>
     <p class="section-sub" style="color:rgba(255,255,255,.68);max-width:480px;margin-left:auto;margin-right:auto;">We'll get back to you within one business day with availability and pricing.</p>
     <button class="btn-primary" id="contactBookBtn">Request a Booking</button>
-    <p style="margin-top:1.6rem;color:rgba(255,255,255,.38);font-size:.82rem;">
-      Or reach us directly:
-      <a href="/cdn-cgi/l/email-protection#375e445b5659535b5e5152504256455344545877505a565e5b1954585a" style="color:rgba(255,255,255,.62);"><span class="__cf_email__" data-cfemail="335a405f525d575f5a5556544652415740505c73545e525a5f1d505c5e">[email&#160;protected]</span></a>
-    </p>
+
+<!-- ADDITION START: Visible contact email -->
+<!-- Plain-text + mailto link for islandlifeguardsco@gmail.com shown directly below the booking CTA -->
+<p style="margin-top:.75rem;color:rgba(255,255,255,.55);font-size:.9rem;">
+  Email us at:
+  <a href="/cdn-cgi/l/email-protection#caa3b9a6aba4aea6a3acafadbfabb8aeb9a9a58aada7aba3a6e4a9a5a7" style="color:rgba(255,255,255,.85);font-weight:600;text-decoration:underline;text-underline-offset:3px;" aria-label="Email Island Lifeguards at islandlifeguardsco@gmail.com">
+    <span class="__cf_email__" data-cfemail="95fce6f9f4fbf1f9fcf3f0f2e0f4e7f1e6f6fad5f2f8f4fcf9bbf6faf8">[email&#160;protected]</span>
+  </a>
+</p>
+<!-- ADDITION END: Visible contact email -->
   </div>
 </section>
 
@@ -847,7 +877,7 @@ nav, .mobile-menu, .hero, section, div, footer, .modal-overlay, .ilc-toggle, .il
 </button>
 <!-- CHATBOT WIDGET END -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ════════════════════════════════════════════
    MOBILE NAV
 ════════════════════════════════════════════ */
@@ -1097,4 +1127,126 @@ bookingForm.addEventListener('submit', e => {
         b.className = 'ilc-btn'; b.style.cssText = 'margin:.25rem 0;font-size:.8rem;';
         b.setAttribute('aria-label', 'Scroll to About section and view owner photo');
         b.textContent = '📸 View owner photo';
-        b.addEventListener('click', () => { closePanel(); document.getElementBy
+        b.addEventListener('click', () => { closePanel(); document.getElementBy        b.addEventListener('click', () => { closePanel(); document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });
+        messages.appendChild(b);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500 + 400);
+    } else {
+      reply = pick(ilcResponses[intent] || ilcResponses.fallback);
+      botReply(reply);
+    }
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); handleSend(); } });
+
+<!-- ADDITION START: Image fallback warnings, smooth scroll, booking modal auto-wire, founder photo fix -->
+<style>
+/* ── Smooth scroll & focus styles for added elements ── */
+.il-add-focus:focus-visible {
+  outline: 3px solid #E63946;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+/* Ensure founder-photo-wrap stacks JPG on top of HEIC gracefully */
+.founder-photo-wrap { position: relative !important; }
+.founder-photo-wrap img:last-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+}
+@media (max-width: 680px) {
+  .founder-photo-wrap img:last-child { border-radius: 10px; }
+}
+</style>
+
+<script>
+/* ════════════════════════════════════════════
+   ADDITION: Image fallback warnings + smooth scroll + modal auto-wire
+   Scoped to window.ILAdditions to avoid collisions.
+════════════════════════════════════════════ */
+window.ILAdditions = (function() {
+
+  /* ── 1. Image fallback console warnings ── */
+  function watchImages() {
+    var imgMap = {
+      './markus-krisetya-nhTeowcfacg-unsplash.jpg': 'Hero background not found — provide ./markus-krisetya-nhTeowcfacg-unsplash.jpg in repo root.',
+      './matthew-waring-MJAoiige14E-unsplash.jpg':  'Services accent image not found — provide ./matthew-waring-MJAoiige14E-unsplash.jpg in repo root.',
+      './100_0600.jpg':  './100_0600.jpg not found — convert HEIC to JPG/PNG and place at ./100_0600.jpg in repo root.',
+      './100_0600.HEIC': './100_0600.HEIC not found — provide HEIC or convert to ./100_0600.jpg.'
+    };
+    document.querySelectorAll('img[src]').forEach(function(img) {
+      var src = img.getAttribute('src');
+      if (imgMap[src]) {
+        img.addEventListener('error', function() {
+          console.warn('[Island Lifeguards] ' + imgMap[src]);
+        });
+      }
+    });
+  }
+
+  /* ── 2. Smooth scroll for all internal anchor links ── */
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var id = a.getAttribute('href').slice(1);
+        if (!id) return;
+        var target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          /* Move focus to target for accessibility */
+          if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
+        }
+      });
+    });
+  }
+
+  /* ── 3. Auto-wire any remaining "Book" / "Request" buttons to openModal ── */
+  function wireBookButtons() {
+    /* openModal is defined in the existing script above; wait for it */
+    if (typeof openModal !== 'function') return;
+    var alreadyWired = ['heroBookBtn','contactBookBtn','navBookBtn','mobileBookBtn'];
+    document.querySelectorAll('button, a').forEach(function(el) {
+      var txt = (el.textContent || '').trim().toLowerCase();
+      var id  = el.id || '';
+      if (alreadyWired.indexOf(id) !== -1) return; /* skip already-wired */
+      if (txt.indexOf('book') !== -1 || txt.indexOf('request a booking') !== -1) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal(el);
+        });
+      }
+    });
+  }
+
+  /* ── 4. Booking modal confirmation email — ensure plain text email visible ── */
+  function ensureConfirmEmail() {
+    var noteEl = document.querySelector('#confirmView .note');
+    if (noteEl && noteEl.textContent.indexOf('islandlifeguardsco@gmail.com') === -1) {
+      var a = document.createElement('a');
+      a.href = 'mailto:islandlifeguardsco@gmail.com';
+      a.textContent = 'islandlifeguardsco@gmail.com';
+      a.style.cssText = 'color:inherit;font-weight:600;';
+      noteEl.appendChild(document.createTextNode(' '));
+      noteEl.appendChild(a);
+    }
+  }
+
+  /* ── Init ── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      watchImages();
+      initSmoothScroll();
+      setTimeout(wireBookButtons, 100); /* after existing script runs */
+      ensureConfirmEmail();
+    });
+  } else {
+    watchImages();
+    initSmoothScroll();
+    setTimeout(wireBookButtons, 1
