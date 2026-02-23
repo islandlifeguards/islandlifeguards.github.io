@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Private Lifeguard Services in Dix Hills, NY | Island Lifeguards</title>
-<meta name="description" content="Island Lifeguards provides professional private lifeguard staffing in Dix Hills and across Long Island. Pool parties, waterfront properties, and private events.">
+<title>Island Lifeguards | Private Lifeguard Services in Dix Hills, NY</title>
 
 <style>
 :root{
@@ -15,27 +14,27 @@
   --ocean-dark:#0A3560;
   --red:#D62828;
   --white:#ffffff;
-  --text:#1e2d3a;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
   font-family:-apple-system,Helvetica,Arial,sans-serif;
   background:var(--sand-light);
-  color:var(--text);
+  color:#1e2d3a;
   line-height:1.6;
 }
 
 /* NAV */
 nav{
-  position:fixed;
-  top:0;left:0;right:0;
-  height:80px;
   background:var(--sand);
+  height:80px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  position:fixed;
+  width:100%;
+  top:0;
   z-index:100;
 }
 
@@ -49,7 +48,7 @@ nav{
 }
 
 .logo-img{
-  height:64px;
+  max-height:70px;
   width:auto;
   display:block;
 }
@@ -65,21 +64,16 @@ nav{
   text-decoration:none;
   color:var(--ocean-dark);
   font-size:.85rem;
+  font-weight:600;
   letter-spacing:.08em;
   text-transform:uppercase;
-  font-weight:600;
-}
-
-.nav-links a:hover{
-  color:var(--red);
 }
 
 .btn-nav{
   background:var(--red);
-  color:var(--white) !important;
+  color:white !important;
   padding:.6rem 1.4rem;
   border-radius:4px;
-  font-weight:700;
 }
 
 /* HERO */
@@ -87,11 +81,11 @@ nav{
   padding-top:120px;
   min-height:90vh;
   background:linear-gradient(135deg,#0F4C81,#0A3560);
+  color:white;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  color:white;
 }
 
 .hero h1{
@@ -113,20 +107,10 @@ nav{
   text-decoration:none;
   border-radius:4px;
   font-weight:700;
-  letter-spacing:.05em;
   text-transform:uppercase;
+  letter-spacing:.05em;
 }
 
-.btn-secondary{
-  border:1px solid rgba(255,255,255,.6);
-  padding:1rem 2rem;
-  margin-left:1rem;
-  color:white;
-  text-decoration:none;
-  border-radius:4px;
-}
-
-/* SECTIONS */
 section{
   padding:5rem 2rem;
   max-width:1100px;
@@ -154,58 +138,11 @@ h2{
   border:1px solid #e6dcc5;
 }
 
-/* TESTIMONIALS */
-.testimonials{
-  background:var(--sand);
-}
-
-.testimonial{
-  background:white;
-  padding:2rem;
-  border-radius:6px;
-  border:1px solid #e6dcc5;
-}
-
-.testimonial h4{
-  margin-top:1rem;
-  font-size:.9rem;
-  color:var(--ocean-dark);
-}
-
-/* CONTACT */
-.contact{
-  background:var(--sand-light);
-}
-
-form input,form textarea,form select{
-  width:100%;
-  padding:.8rem;
-  margin-bottom:1rem;
-  border:1px solid #ddd;
-  border-radius:4px;
-}
-
-button{
-  background:var(--red);
-  color:white;
-  padding:1rem;
-  border:none;
-  border-radius:4px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-/* FOOTER */
 footer{
   background:#0A2232;
   color:white;
   padding:3rem 2rem;
   text-align:center;
-}
-
-footer a{
-  color:white;
-  text-decoration:none;
 }
 </style>
 </head>
@@ -214,16 +151,15 @@ footer a{
 
 <nav>
   <div class="nav-inner">
-    <a href="#">
-      <img src="./islandlifeguards-high-resolution-logo-transparent.png"
-           alt="Island Lifeguards Logo"
-           class="logo-img">
-    </a>
+
+    <!-- THIS IS THE ONLY LINE THAT MATTERS -->
+    <img src="islandlifeguards-high-resolution-logo-transparent.png"
+         alt="Island Lifeguards Logo"
+         class="logo-img">
 
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#contact" class="btn-nav">Book a Lifeguard</a></li>
     </ul>
@@ -233,9 +169,8 @@ footer a{
 <section class="hero">
   <div>
     <h1>You Do the Fun.<br>We'll Do the Safety.</h1>
-    <p>Professional lifeguard staffing serving Dix Hills and all of Long Island — certified, experienced, and ready for your event.</p>
+    <p>Professional lifeguard staffing serving Dix Hills and all of Long Island.</p>
     <a href="#contact" class="btn-primary">Book a Lifeguard</a>
-    <a href="#contact" class="btn-secondary">Request a Quote</a>
   </div>
 </section>
 
@@ -244,63 +179,26 @@ footer a{
   <div class="cards">
     <div class="card">
       <h3>Pool Lifeguarding</h3>
-      <p>Professional private lifeguards for residential pools, HOA communities, and backyard parties.</p>
+      <p>Professional lifeguards for residential pools and private events.</p>
     </div>
     <div class="card">
       <h3>Beach & Open Water</h3>
-      <p>Experienced guards trained for waterfront properties and open-water environments.</p>
+      <p>Experienced guards trained for waterfront and open-water environments.</p>
     </div>
     <div class="card">
       <h3>Event Safety Planning</h3>
-      <p>Multi-guard coordination and event-specific safety plans for larger gatherings.</p>
+      <p>Multi-guard deployment and custom safety planning for larger gatherings.</p>
     </div>
   </div>
-</section>
-
-<section id="about">
-  <h2>Why Island Lifeguards</h2>
-  <p>Based in Dix Hills, NY, Island Lifeguards provides certified and professionally trained lifeguards for private events across Long Island. We focus on professionalism, reliability, and calm, attentive supervision at every event.</p>
-</section>
-
-<section id="testimonials" class="testimonials">
-  <h2>Trusted by Local Clients</h2>
-  <div class="cards">
-    <div class="testimonial">
-      <p>"Their team is professional, reliable, and truly kept our guests safe all season. Highly recommend."</p>
-      <h4>Sarah Chen — Resort Manager, Long Island</h4>
-    </div>
-    <div class="testimonial">
-      <p>"Island Lifeguards made our pool party stress-free. The guard was attentive and great with kids."</p>
-      <h4>Mike Ferraro — HOA President, Dix Hills</h4>
-    </div>
-    <div class="testimonial">
-      <p>"Professional, punctual, and easy to work with. I'll be using them again for future events."</p>
-      <h4>Danielle Russo — Event Planner, Huntington</h4>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <h2>Book a Lifeguard</h2>
-  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="tel" name="phone" placeholder="Phone Number">
-    <select name="service">
-      <option>Pool Lifeguarding</option>
-      <option>Beach & Open Water</option>
-      <option>Event Safety Planning</option>
-    </select>
-    <textarea name="details" placeholder="Event details..."></textarea>
-    <button type="submit">Submit Booking Request</button>
-  </form>
 </section>
 
 <footer>
   <p>Island Lifeguards — Dix Hills, NY</p>
-  <p><a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a></p>
   <p>&copy; 2026 Island Lifeguards. All rights reserved.</p>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>
