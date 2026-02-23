@@ -1,915 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Private Lifeguard Services in Dix Hills, NY | Island Lifeguards</title>
-  <meta name="description" content="Island Lifeguards provides certified, professionally trained private lifeguard staffing for pool parties, backyard events, waterfront properties, and gatherings across Long Island, NY. Serving Dix Hills and all of Long Island." />
-  <meta property="og:title" content="Island Lifeguards – Private Lifeguard Staffing on Long Island" />
-  <meta property="og:description" content="You Do the Fun. We'll Do the Safety. Professional lifeguard staffing for pools, beaches, and events across Long Island, NY." />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_US" />
-  <meta name="robots" content="index, follow" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    :root {
-      --sand: #D9C79E;
-      --sand-light: #EDE3CC;
-      --sand-dark: #C4AE7E;
-      --ocean: #0F4C81;
-      --ocean-dark: #0A3560;
-      --red: #D62828;
-      --red-dark: #b81f1f;
-      --white: #FFFFFF;
-      --off-white: #FAF7F2;
-      --text: #1e2d3a;
-      --text-mid: #3d5166;
-      --muted: #6b7f8f;
-      --border-light: #e3d8c0;
-      --nav-h: 76px;
-    }
+<title>Private Lifeguard Services in Dix Hills, NY | Island Lifeguards</title>
+<meta name="description" content="Island Lifeguards provides professional private lifeguard staffing in Dix Hills and across Long Island. Pool parties, waterfront properties, and private events.">
 
-    html { scroll-behavior: smooth; }
+<style>
+:root{
+  --sand:#D9C79E;
+  --sand-light:#F5EFE3;
+  --ocean:#0F4C81;
+  --ocean-dark:#0A3560;
+  --red:#D62828;
+  --white:#ffffff;
+  --text:#1e2d3a;
+}
 
-    body {
-      font-family: 'Georgia', serif;
-      color: var(--text);
-      background: var(--off-white);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:-apple-system,Helvetica,Arial,sans-serif;
+  background:var(--sand-light);
+  color:var(--text);
+  line-height:1.6;
+}
 
-    h1, h2, h3, h4 {
-      font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-      letter-spacing: -0.01em;
-    }
-    .sans { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0;
-      margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
-      white-space: nowrap; border: 0;
-    }
+/* NAV */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:80px;
+  background:var(--sand);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  z-index:100;
+}
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: var(--nav-h);
-      background: var(--sand);
-      border-bottom: 2px solid var(--sand-dark);
-      display: flex; align-items: center;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.09);
-    }
-    .nav-inner {
-      width: 100%; max-width: 1200px; margin: 0 auto;
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-brand {
-      display: flex; align-items: center;
-      text-decoration: none; flex-shrink: 0;
-    }
-    .nav-brand img,
-    .logo-img {
-      height: 64px; width: auto; max-width: 260px;
-      object-fit: contain; display: block;
-    }
-    .nav-links {
-      display: flex; align-items: center; gap: 1.75rem; list-style: none;
-    }
-    .nav-links a {
-      color: var(--ocean-dark); text-decoration: none;
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.83rem; letter-spacing: 0.06em;
-      text-transform: uppercase; font-weight: 500; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--red); }
-    .btn-nav {
-      background: var(--red) !important; color: var(--white) !important;
-      padding: 0.55rem 1.3rem; border-radius: 4px;
-      font-weight: 700 !important; letter-spacing: 0.04em !important;
-      box-shadow: 0 3px 10px rgba(214,40,40,0.28);
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
-    }
-    .btn-nav:hover {
-      background: var(--red-dark) !important; transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(214,40,40,0.38) !important;
-    }
+.nav-inner{
+  width:100%;
+  max-width:1200px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 2rem;
+}
 
-    /* hamburger */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 4px; border: none; background: none;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--ocean-dark); transition: all 0.25s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.logo-img{
+  height:64px;
+  width:auto;
+  display:block;
+}
 
-    .mobile-menu {
-      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
-      background: var(--sand); z-index: 99;
-      padding: 1.5rem 2rem 2rem;
-      border-bottom: 2px solid var(--sand-dark);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      opacity: 0; transform: translateY(-10px); transition: all 0.25s;
-    }
-    .mobile-menu.active { display: block; opacity: 1; transform: translateY(0); }
-    .mobile-menu a {
-      display: block; color: var(--ocean-dark); text-decoration: none;
-      padding: 0.85rem 0;
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.95rem; letter-spacing: 0.05em; font-weight: 500;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .mobile-menu a:last-of-type { border: none; }
-    .mobile-menu .btn-mob {
-      margin-top: 1rem; display: block; text-align: center;
-      background: var(--red); color: var(--white); padding: 0.9rem;
-      border-radius: 4px; font-weight: 700; letter-spacing: 0.05em;
-      text-transform: uppercase; font-size: 0.85rem;
-      box-shadow: 0 3px 10px rgba(214,40,40,0.28);
-    }
+.nav-links{
+  display:flex;
+  gap:2rem;
+  list-style:none;
+  align-items:center;
+}
 
-    /* ─── HERO ─── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(160deg, #0A2E4D 0%, #0d3d6e 55%, #0a3058 100%);
-      display: flex; flex-direction: column; justify-content: center;
-      position: relative; overflow: hidden; padding-top: var(--nav-h);
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(15,76,129,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(214,40,40,0.07) 0%, transparent 50%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0; opacity: 0.04;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0; }
-    .hero-wave svg { display: block; width: 100%; }
-    .hero-content {
-      position: relative; z-index: 2;
-      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-      display: flex; flex-direction: column; justify-content: center;
-      min-height: calc(100vh - var(--nav-h));
-    }
-    .hero-eyebrow {
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5); margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: inline-block; width: 30px; height: 1px; background: var(--red);
-    }
-    h1 {
-      font-size: clamp(2.6rem, 6vw, 5rem); color: var(--white); font-weight: normal;
-      line-height: 1.08; max-width: 800px; margin-bottom: 1.5rem;
-    }
-    h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.55); }
-    .hero-sub {
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 1.05rem; color: rgba(255,255,255,0.65);
-      max-width: 520px; margin-bottom: 2.8rem; line-height: 1.65;
-    }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .btn-primary {
-      display: inline-block; background: var(--red); color: var(--white);
-      padding: 0.9rem 2rem; border-radius: 4px; text-decoration: none;
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.88rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(214,40,40,0.38);
-    }
-    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 6px 28px rgba(214,40,40,0.48); }
-    .btn-outline {
-      display: inline-block; border: 1px solid rgba(255,255,255,0.35);
-      color: rgba(255,255,255,0.85); padding: 0.9rem 2rem; border-radius: 4px;
-      text-decoration: none;
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: var(--white); background: rgba(255,255,255,0.08); }
-    .hero-stats {
-      display: flex; flex-wrap: wrap; gap: 2.5rem;
-      margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    .stat-item { display: flex; flex-direction: column; }
-    .stat-num { font-size: 1.9rem; font-weight: 700; color: var(--white); font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; line-height: 1; }
-    .stat-label { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px; }
+.nav-links a{
+  text-decoration:none;
+  color:var(--ocean-dark);
+  font-size:.85rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:600;
+}
 
-    /* ─── SECTIONS ─── */
-    section { padding: 6rem 2rem; }
-    .container { max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--red); display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem;
-    }
-    .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--red); }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: normal; color: var(--ocean-dark); line-height: 1.15; margin-bottom: 1.2rem; }
-    .lead { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
+.nav-links a:hover{
+  color:var(--red);
+}
 
-    /* ─── ABOUT ─── */
-    .about { background: var(--sand-light); }
-    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .about-features { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2.5rem; }
-    .feature-block {
-      display: flex; gap: 1.2rem; padding: 1.5rem;
-      background: var(--white); border: 1px solid var(--border-light); border-radius: 6px;
-      transition: box-shadow 0.25s, transform 0.2s;
-    }
-    .feature-block:hover { box-shadow: 0 8px 32px rgba(15,76,129,0.1); transform: translateY(-2px); }
-    .feature-icon { width: 44px; height: 44px; flex-shrink: 0; background: rgba(15,76,129,0.07); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-    .feature-icon svg { width: 22px; height: 22px; }
-    .feature-title { font-size: 1rem; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; color: var(--ocean-dark); margin-bottom: 0.4rem; }
-    .feature-desc { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-    .about-card { background: var(--ocean-dark); border-radius: 6px; padding: 2.5rem; color: var(--white); }
-    .about-card p { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 1.5rem; }
-    .cert-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .cert-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.3rem 0.75rem; border-radius: 3px; }
-    .accent-bar { width: 40px; height: 3px; background: var(--red); margin-bottom: 1.5rem; }
+.btn-nav{
+  background:var(--red);
+  color:var(--white) !important;
+  padding:.6rem 1.4rem;
+  border-radius:4px;
+  font-weight:700;
+}
 
-    /* ─── SERVICES ─── */
-    .services { background: var(--off-white); }
-    .services-header { margin-bottom: 3.5rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .service-card { border: 1px solid var(--border-light); border-radius: 6px; overflow: hidden; transition: box-shadow 0.25s, transform 0.2s; display: flex; flex-direction: column; background: var(--white); }
-    .service-card:hover { box-shadow: 0 12px 40px rgba(15,76,129,0.1); transform: translateY(-3px); }
-    .card-top { background: var(--ocean-dark); padding: 2rem 1.75rem 1.5rem; position: relative; }
-    .card-top::after { content: ''; position: absolute; bottom: 0; left: 0; width: 48px; height: 3px; background: var(--red); }
-    .card-num { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.68rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); margin-bottom: 0.8rem; }
-    .card-title { font-size: 1.25rem; color: var(--white); font-weight: normal; line-height: 1.2; }
-    .card-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
-    .card-desc { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
-    .card-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
-    .card-list li { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.83rem; color: var(--text); display: flex; align-items: flex-start; gap: 0.6rem; }
-    .card-list li::before { content: ''; width: 6px; height: 6px; flex-shrink: 0; background: var(--red); border-radius: 50%; margin-top: 0.45em; }
+/* HERO */
+.hero{
+  padding-top:120px;
+  min-height:90vh;
+  background:linear-gradient(135deg,#0F4C81,#0A3560);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
 
-    /* ─── TESTIMONIALS ─── */
-    .testimonials-section { background: var(--sand); padding: 6rem 2rem; }
-    .testimonials-section h2 { color: var(--ocean-dark); }
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(2.5rem,5vw,4rem);
+  margin-bottom:1rem;
+}
 
-    .t-tabs { display: flex; gap: 0.5rem; margin-top: 1.5rem; margin-bottom: 2.5rem; }
-    .t-tab {
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
-      padding: 0.5rem 1.25rem; border-radius: 30px; cursor: pointer;
-      border: 2px solid var(--ocean); background: transparent; color: var(--ocean);
-      transition: background 0.2s, color 0.2s;
-    }
-    .t-tab.active, .t-tab:hover { background: var(--ocean); color: var(--white); }
+.hero p{
+  max-width:600px;
+  margin:0 auto 2rem;
+  opacity:.85;
+}
 
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 1.5rem;
-    }
-    .t-card {
-      background: var(--white); border: 1px solid var(--border-light); border-radius: 8px;
-      padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
-      transition: box-shadow 0.25s, transform 0.2s;
-    }
-    .t-card:hover { box-shadow: 0 10px 36px rgba(15,76,129,0.1); transform: translateY(-2px); }
-    .t-card.featured { grid-row: 1 / 3; padding: 2.5rem; }
-    .t-card.hidden { display: none !important; }
+.btn-primary{
+  background:var(--red);
+  padding:1rem 2rem;
+  color:white;
+  text-decoration:none;
+  border-radius:4px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
 
-    .t-header { display: flex; align-items: center; gap: 1rem; }
-    .t-avatar {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: var(--ocean); color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 1.1rem; font-weight: 700; flex-shrink: 0; overflow: hidden;
-    }
-    .t-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .t-avatar.featured-av { width: 64px; height: 64px; font-size: 1.3rem; }
-    .t-meta { display: flex; flex-direction: column; gap: 0.15rem; }
-    .t-name { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--ocean-dark); }
-    .t-role { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.78rem; color: var(--muted); }
-    .t-location { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.73rem; color: var(--muted); letter-spacing: 0.04em; }
-    .t-stars { color: #b8860b; font-size: 0.95rem; letter-spacing: 0.05em; }
-    .t-stars.featured-stars { font-size: 1.1rem; }
-    .t-quote { font-size: 1rem; color: var(--text-mid); line-height: 1.7; font-style: italic; border-left: 3px solid var(--sand-dark); padding-left: 1rem; }
-    .t-card.featured .t-quote { font-size: 1.12rem; line-height: 1.78; }
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.6);
+  padding:1rem 2rem;
+  margin-left:1rem;
+  color:white;
+  text-decoration:none;
+  border-radius:4px;
+}
 
-    /* ─── CONTACT ─── */
-    .contact { background: var(--sand-light); }
-    .contact-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4rem; align-items: start; }
-    .form-card { background: var(--white); border: 1px solid var(--border-light); border-radius: 6px; padding: 2.5rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
-    .form-group:last-child { margin-bottom: 0; }
-    label { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ocean-dark); }
-    input, select, textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-light); border-radius: 4px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--text); background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
-    input:focus, select:focus, textarea:focus { border-color: var(--ocean); box-shadow: 0 0 0 3px rgba(15,76,129,0.1); }
-    textarea { resize: vertical; min-height: 110px; }
-    .btn-submit { width: 100%; background: var(--red); color: var(--white); padding: 0.95rem; border: none; border-radius: 4px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; margin-top: 1.5rem; box-shadow: 0 4px 16px rgba(214,40,40,0.28); transition: background 0.2s, transform 0.15s; }
-    .btn-submit:hover { background: var(--red-dark); transform: translateY(-1px); }
-    .contact-info-card { background: var(--ocean-dark); border-radius: 6px; padding: 2.5rem; color: var(--white); position: sticky; top: calc(var(--nav-h) + 2rem); }
-    .contact-info-card h3 { font-size: 1.4rem; font-weight: normal; color: var(--white); margin-bottom: 0.5rem; }
-    .contact-info-card p { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 2rem; }
-    .contact-detail { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
-    .detail-item { display: flex; gap: 0.8rem; align-items: flex-start; }
-    .detail-icon { width: 34px; height: 34px; flex-shrink: 0; background: rgba(255,255,255,0.08); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
-    .detail-icon svg { width: 15px; height: 15px; }
-    .detail-text { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; }
-    .detail-text span { display: block; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 2px; }
-    .detail-text a, .detail-text strong { color: rgba(255,255,255,0.8); font-size: 0.88rem; text-decoration: none; }
-    .detail-text a:hover { color: var(--white); }
-    .social-links { display: flex; flex-direction: column; gap: 0.6rem; }
-    .social-link { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; text-decoration: none; color: rgba(255,255,255,0.75); font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.83rem; transition: background 0.2s, color 0.2s; }
-    .social-link:hover { background: rgba(255,255,255,0.12); color: var(--white); }
-    .social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+/* SECTIONS */
+section{
+  padding:5rem 2rem;
+  max-width:1100px;
+  margin:auto;
+}
 
-    /* ─── FOOTER ─── */
-    footer { background: #0A2232; padding: 4rem 2rem 2rem; }
-    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-col h4 { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; }
-    .footer-brand { font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif; font-size: 1.2rem; color: var(--sand); margin-bottom: 0.75rem; }
-    .footer-col p, .footer-col a { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.83rem; line-height: 1.7; color: rgba(255,255,255,0.45); text-decoration: none; display: block; margin-bottom: 0.4rem; transition: color 0.2s; }
-    .footer-col a:hover { color: rgba(255,255,255,0.8); }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .footer-bottom p { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.77rem; color: rgba(255,255,255,0.25); }
-    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; font-size: 0.77rem; transition: color 0.2s; }
-    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+h2{
+  font-family:Georgia,serif;
+  font-size:2rem;
+  margin-bottom:1rem;
+  color:var(--ocean-dark);
+}
 
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-content > * { animation: fadeUp 0.7s ease both; }
-    .hero-eyebrow { animation-delay: 0.1s; }
-    h1 { animation-delay: 0.22s; }
-    .hero-sub { animation-delay: 0.34s; }
-    .hero-ctas { animation-delay: 0.46s; }
-    .hero-stats { animation-delay: 0.58s; }
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
+  margin-top:2rem;
+}
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
-      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .contact-layout { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .contact-info-card { position: static; }
-      .testimonials-grid { grid-template-columns: 1fr; grid-template-rows: unset; }
-      .t-card.featured { grid-row: unset; }
-    }
-    @media (max-width: 680px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-stats { gap: 1.5rem; }
-    }
-    @media (max-width: 780px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-brand img, .logo-img { height: 44px; max-width: 180px; }
-    }
-  </style>
+.card{
+  background:white;
+  padding:2rem;
+  border-radius:6px;
+  border:1px solid #e6dcc5;
+}
+
+/* TESTIMONIALS */
+.testimonials{
+  background:var(--sand);
+}
+
+.testimonial{
+  background:white;
+  padding:2rem;
+  border-radius:6px;
+  border:1px solid #e6dcc5;
+}
+
+.testimonial h4{
+  margin-top:1rem;
+  font-size:.9rem;
+  color:var(--ocean-dark);
+}
+
+/* CONTACT */
+.contact{
+  background:var(--sand-light);
+}
+
+form input,form textarea,form select{
+  width:100%;
+  padding:.8rem;
+  margin-bottom:1rem;
+  border:1px solid #ddd;
+  border-radius:4px;
+}
+
+button{
+  background:var(--red);
+  color:white;
+  padding:1rem;
+  border:none;
+  border-radius:4px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  background:#0A2232;
+  color:white;
+  padding:3rem 2rem;
+  text-align:center;
+}
+
+footer a{
+  color:white;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav role="banner">
-    <div class="nav-inner">
-      <a href="#" class="nav-brand" aria-label="Island Lifeguards Home">
-        <img src="images/islandlifeguards-high-resolution-logo-transparent.png" alt="Island Lifeguards Logo" class="logo-img" />
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="btn-nav">Book a Lifeguard</a></li>
-      </ul>
-      <button class="hamburger" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-inner">
+    <a href="#">
+      <img src="./islandlifeguards-high-resolution-logo-transparent.png"
+           alt="Island Lifeguards Logo"
+           class="logo-img">
+    </a>
 
-  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#contact">Contact</a>
-    <a href="#contact" class="btn-mob">Book a Lifeguard</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="btn-nav">Book a Lifeguard</a></li>
+    </ul>
   </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Hero">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-content">
-      <div class="hero-eyebrow" aria-hidden="true">Private Lifeguard Staffing — Long Island, NY</div>
-      <h1>You Do the Fun.<br><em>We'll Do</em> the Safety.</h1>
-      <p class="hero-sub sans">Professional lifeguard staffing serving Dix Hills and all of Long Island — certified, experienced, and ready for your event.</p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Book a Lifeguard</a>
-        <a href="#contact" class="btn-outline">Request a Quote</a>
-      </div>
-      <div class="hero-stats" aria-label="Key statistics">
-        <div class="stat-item">
-          <span class="stat-num sans">100%</span>
-          <span class="stat-label sans">Certified Staff</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num sans">ARC</span>
-          <span class="stat-label sans">Certified</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num sans">LI</span>
-          <span class="stat-label sans">Based &amp; Local</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num sans">24/7</span>
-          <span class="stat-label sans">Booking Support</span>
-        </div>
-      </div>
+<section class="hero">
+  <div>
+    <h1>You Do the Fun.<br>We'll Do the Safety.</h1>
+    <p>Professional lifeguard staffing serving Dix Hills and all of Long Island — certified, experienced, and ready for your event.</p>
+    <a href="#contact" class="btn-primary">Book a Lifeguard</a>
+    <a href="#contact" class="btn-secondary">Request a Quote</a>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Pool Lifeguarding</h3>
+      <p>Professional private lifeguards for residential pools, HOA communities, and backyard parties.</p>
     </div>
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0 70 L0 35 Q360 0 720 35 Q1080 70 1440 25 L1440 70 Z" fill="#FAF7F2"/>
-      </svg>
+    <div class="card">
+      <h3>Beach & Open Water</h3>
+      <p>Experienced guards trained for waterfront properties and open-water environments.</p>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div>
-          <div class="section-label" aria-hidden="true">Why Island Lifeguards</div>
-          <h2>Safety You Can Trust. Service You'll Remember.</h2>
-          <p class="lead sans">We bring the same professional standards found at premier aquatic facilities directly to your private event — so you can relax and enjoy every moment.</p>
-          <div class="about-features">
-            <div class="feature-block">
-              <div class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#0F4C81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div>
-                <div class="feature-title sans">Certified &amp; Experienced Professionals</div>
-                <p class="feature-desc">Every member of our team holds current American Red Cross or equivalent lifeguard certification. We bring real experience from pools, beaches, and high-attendance events — not just a card.</p>
-              </div>
-            </div>
-            <div class="feature-block">
-              <div class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#0F4C81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
-              </div>
-              <div>
-                <div class="feature-title sans">Reliable &amp; Professionally Vetted</div>
-                <p class="feature-desc">Every guard we place is background-checked, professionally trained, and held to a high standard of conduct. Our clients trust us to send only the best — and we take that responsibility seriously.</p>
-              </div>
-            </div>
-            <div class="feature-block">
-              <div class="feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#0F4C81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <div>
-                <div class="feature-title sans">Customized Safety Solutions</div>
-                <p class="feature-desc">No two events are the same. We work with you before your event to assess the setting, determine appropriate guard-to-swimmer ratios, and create a safety plan tailored to your needs.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="about-card">
-            <div class="accent-bar" aria-hidden="true"></div>
-            <h3 style="font-size:1.35rem; font-weight:normal; color:#fff; margin-bottom:1rem;">Island Lifeguards</h3>
-            <p>Founded in Dix Hills and rooted in the Long Island community, Island Lifeguards was built on a single belief: every aquatic event deserves professional oversight. Whether you're hosting a summer pool party for thirty guests or managing a waterfront property with continuous traffic, we provide the staffing to keep everyone safe — without disrupting the experience you've worked to create.</p>
-            <p>We serve residential clients, HOAs, corporate events, private clubs, and everything in between across Nassau and Suffolk County. All guards are certified, background checked, and experienced in private-event coverage.</p>
-            <div class="cert-tags" aria-label="Credentials">
-              <span class="cert-tag">ARC Certified</span>
-              <span class="cert-tag">CPR / AED</span>
-              <span class="cert-tag">First Aid</span>
-              <span class="cert-tag">Background Checked</span>
-              <span class="cert-tag">Long Island Based</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Event Safety Planning</h3>
+      <p>Multi-guard coordination and event-specific safety plans for larger gatherings.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <div class="services-header">
-        <div class="section-label" aria-hidden="true">What We Offer</div>
-        <h2>Professional Lifeguard Services<br>for Every Setting</h2>
-        <p class="lead sans" style="margin-top:0.5rem;">From backyard pools to open waterfront properties, Island Lifeguards provides certified coverage tailored to your exact event.</p>
-      </div>
-      <div class="services-grid">
-        <article class="service-card">
-          <div class="card-top">
-            <div class="card-num sans">01</div>
-            <h3 class="card-title">Pool Lifeguarding</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-desc sans">Private residential pools, HOA community pools, and party events. We staff experienced guards who maintain attentive supervision so you can focus on your guests.</p>
-            <ul class="card-list" aria-label="Pool lifeguarding highlights">
-              <li><span>Private homes &amp; backyard pool parties</span></li>
-              <li><span>HOA and community pool coverage</span></li>
-              <li><span>Flexible hourly and event-duration scheduling</span></li>
-            </ul>
-          </div>
-        </article>
-        <article class="service-card">
-          <div class="card-top">
-            <div class="card-num sans">02</div>
-            <h3 class="card-title">Beach &amp; Open Water Safety</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-desc sans">Waterfront properties, private beach access, and open-water gatherings require a different level of expertise. Our guards are trained specifically for open water environments.</p>
-            <ul class="card-list" aria-label="Beach and open water highlights">
-              <li><span>Private waterfront and dock coverage</span></li>
-              <li><span>Open-water swim event supervision</span></li>
-              <li><span>Trained in surf, current, and tidal conditions</span></li>
-            </ul>
-          </div>
-        </article>
-        <article class="service-card">
-          <div class="card-top">
-            <div class="card-num sans">03</div>
-            <h3 class="card-title">Event Safety Planning</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-desc sans">Large gatherings require more than a single guard on deck. We provide pre-event safety consultations, multi-guard coordination, and a detailed safety plan for your peace of mind.</p>
-            <ul class="card-list" aria-label="Event safety planning highlights">
-              <li><span>Pre-event site assessment &amp; consultation</span></li>
-              <li><span>Multi-guard deployment for large events</span></li>
-              <li><span>Emergency action plan development</span></li>
-            </ul>
-          </div>
-        </article>
-      </div>
+<section id="about">
+  <h2>Why Island Lifeguards</h2>
+  <p>Based in Dix Hills, NY, Island Lifeguards provides certified and professionally trained lifeguards for private events across Long Island. We focus on professionalism, reliability, and calm, attentive supervision at every event.</p>
+</section>
+
+<section id="testimonials" class="testimonials">
+  <h2>Trusted by Local Clients</h2>
+  <div class="cards">
+    <div class="testimonial">
+      <p>"Their team is professional, reliable, and truly kept our guests safe all season. Highly recommend."</p>
+      <h4>Sarah Chen — Resort Manager, Long Island</h4>
     </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials-section" id="testimonials" aria-labelledby="t-heading">
-    <div class="container">
-      <div class="section-label" aria-hidden="true">What Clients Say</div>
-      <h2 id="t-heading">Trusted by Local Clients</h2>
-      <p class="lead sans">Real feedback from private hosts, resorts, and event planners across Long Island.</p>
-
-      <div class="t-tabs" role="tablist" aria-label="Filter testimonials">
-        <button class="t-tab active" data-filter="all" role="tab" aria-selected="true" id="tab-all" aria-controls="testimonialsGrid">All</button>
-        <button class="t-tab" data-filter="events" role="tab" aria-selected="false" id="tab-events" aria-controls="testimonialsGrid">Resorts &amp; Events</button>
-      </div>
-
-      <div aria-live="polite" aria-atomic="true" class="sr-only" id="t-live"></div>
-
-      <div class="testimonials-grid" id="testimonialsGrid">
-
-        <!-- Featured: Sarah Chen — Resort Manager (events) -->
-        <article class="t-card featured"
-                 aria-label="Testimonial from Sarah Chen, Resort Manager, Long Island NY"
-                 data-category="events">
-          <div class="t-header">
-            <div class="t-avatar featured-av" aria-hidden="true">
-              <img src="images/testimonial-1.jpg" alt="Photo of Sarah Chen"
-                   onerror="this.style.display='none';this.parentElement.setAttribute('data-initials','SC');this.parentElement.setAttribute('aria-label','Sarah Chen initials avatar')" />
-            </div>
-            <div class="t-meta">
-              <h3 class="t-name">Sarah Chen</h3>
-              <span class="t-role">Resort Manager</span>
-              <span class="t-location">Long Island, NY</span>
-            </div>
-          </div>
-          <div class="t-stars featured-stars" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <p class="t-quote">"Their team is professional, reliable, and truly kept our guests safe all season. The guards arrived on time, communicated clearly, and handled a busy pool deck without missing a beat. Highly recommend Island Lifeguards to any resort or venue looking for dependable coverage."</p>
-        </article>
-
-        <!-- Mike Ferraro – HOA President (general) -->
-        <article class="t-card"
-                 aria-label="Testimonial from Mike Ferraro, HOA President, Dix Hills NY"
-                 data-category="general">
-          <div class="t-header">
-            <div class="t-avatar" aria-hidden="true">
-              <img src="images/testimonial-2.jpg" alt="Photo of Mike Ferraro"
-                   onerror="this.style.display='none';this.parentElement.setAttribute('data-initials','MF')" />
-            </div>
-            <div class="t-meta">
-              <h3 class="t-name">Mike Ferraro</h3>
-              <span class="t-role">HOA President</span>
-              <span class="t-location">Dix Hills, NY</span>
-            </div>
-          </div>
-          <div class="t-stars" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <p class="t-quote">"We hired Island Lifeguards for our community pool this past summer and they were outstanding — punctual, professional, and great with the kids. Booking them again for next season without question."</p>
-        </article>
-
-        <!-- Danielle Russo – Event Planner (events) -->
-        <article class="t-card"
-                 aria-label="Testimonial from Danielle Russo, Event Planner, Huntington NY"
-                 data-category="events">
-          <div class="t-header">
-            <div class="t-avatar" aria-hidden="true">
-              <img src="images/testimonial-3.jpg" alt="Photo of Danielle Russo"
-                   onerror="this.style.display='none';this.parentElement.setAttribute('data-initials','DR')" />
-            </div>
-            <div class="t-meta">
-              <h3 class="t-name">Danielle Russo</h3>
-              <span class="t-role">Event Planner</span>
-              <span class="t-location">Huntington, NY</span>
-            </div>
-          </div>
-          <div class="t-stars" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <p class="t-quote">"I've coordinated dozens of waterfront events and Island Lifeguards is always my first call. They showed up prepared, communicated with my team throughout, and kept everything running smoothly."</p>
-        </article>
-
-        <!-- Tom & Lisa Greco – Private Homeowners (general) -->
-        <article class="t-card"
-                 aria-label="Testimonial from Tom and Lisa Greco, Private Homeowners, Commack NY"
-                 data-category="general">
-          <div class="t-header">
-            <div class="t-avatar" aria-hidden="true">
-              <img src="images/testimonial-4.jpg" alt="Photo of Tom and Lisa Greco"
-                   onerror="this.style.display='none';this.parentElement.setAttribute('data-initials','TG')" />
-            </div>
-            <div class="t-meta">
-              <h3 class="t-name">Tom &amp; Lisa Greco</h3>
-              <span class="t-role">Private Homeowners</span>
-              <span class="t-location">Commack, NY</span>
-            </div>
-          </div>
-          <div class="t-stars" aria-label="5 out of 5 stars" role="img">★★★★★</div>
-          <p class="t-quote">"We had about 40 kids at our son's birthday pool party and wanted a professional on deck. The guard from Island Lifeguards was calm, attentive, and put every parent at ease. Worth every penny."</p>
-        </article>
-
-      </div>
+    <div class="testimonial">
+      <p>"Island Lifeguards made our pool party stress-free. The guard was attentive and great with kids."</p>
+      <h4>Mike Ferraro — HOA President, Dix Hills</h4>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-label" aria-hidden="true">Get in Touch</div>
-      <h2 style="margin-bottom:0.5rem;">Book a Lifeguard for Your Event</h2>
-      <p class="lead sans" style="margin-bottom:3rem;">Fill out the form below and we'll get back to you within one business day with availability and pricing.</p>
-      <div class="contact-layout">
-        <div class="form-card">
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate aria-label="Booking request form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Jane Smith" required autocomplete="name" />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(631) 555-0100" autocomplete="tel" />
-              </div>
-              <div class="form-group">
-                <label for="date">Event Date</label>
-                <input type="date" id="date" name="event_date" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="service">Service Type</label>
-              <select id="service" name="service_type" required>
-                <option value="" disabled selected>Select a service…</option>
-                <option value="pool">Pool Lifeguarding</option>
-                <option value="beach">Beach &amp; Open Water Safety</option>
-                <option value="event">Event Safety Planning</option>
-                <option value="other">Other / Not Sure</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="details">Event Details</label>
-              <textarea id="details" name="event_details" placeholder="Tell us about your event — location, expected number of guests, duration, any special requirements…"></textarea>
-            </div>
-            <button type="submit" class="btn-submit sans">Submit Booking Request</button>
-          </form>
-        </div>
-        <aside class="contact-info-card" aria-label="Contact information">
-          <div class="accent-bar" aria-hidden="true"></div>
-          <h3>Island Lifeguards</h3>
-          <p>Serving Dix Hills and all of Long Island with certified, professionally trained private lifeguard staffing.</p>
-          <div class="contact-detail">
-            <div class="detail-item">
-              <div class="detail-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div class="detail-text">
-                <span>Location</span>
-                <strong>Dix Hills, NY — Serving All of Long Island</strong>
-              </div>
-            </div>
-            <div class="detail-item">
-              <div class="detail-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div class="detail-text">
-                <span>Email</span>
-                <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
-              </div>
-            </div>
-          </div>
-          <div class="social-links" aria-label="Social media links">
-            <a href="https://www.linkedin.com/company/island-lifeguards" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Island Lifeguards on LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <a href="https://www.instagram.com/islandlifeguards/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Island Lifeguards on Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              Instagram
-            </a>
-          </div>
-        </aside>
-      </div>
+    <div class="testimonial">
+      <p>"Professional, punctual, and easy to work with. I'll be using them again for future events."</p>
+      <h4>Danielle Russo — Event Planner, Huntington</h4>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand">Island Lifeguards</div>
-        <p>Professional, certified, and experienced private lifeguard staffing for Long Island's pools, beaches, and private events. Based in Dix Hills, NY.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="#services">Pool Lifeguarding</a>
-        <a href="#services">Beach &amp; Open Water Safety</a>
-        <a href="#services">Event Safety Planning</a>
-        <a href="#contact">Request a Quote</a>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="#about">About Us</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
-        <a href="#contact" style="margin-top:0.5rem;">Book a Lifeguard →</a>
-      </div>
-      <div class="footer-col">
-        <h4>Follow Us</h4>
-        <a href="https://www.linkedin.com/company/island-lifeguards" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.instagram.com/islandlifeguards/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="year">2026</span> Island Lifeguards. All rights reserved.</p>
-      <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
-    </div>
-  </footer>
+<section id="contact" class="contact">
+  <h2>Book a Lifeguard</h2>
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number">
+    <select name="service">
+      <option>Pool Lifeguarding</option>
+      <option>Beach & Open Water</option>
+      <option>Event Safety Planning</option>
+    </select>
+    <textarea name="details" placeholder="Event details..."></textarea>
+    <button type="submit">Submit Booking Request</button>
+  </form>
+</section>
 
-  <script>
-    /* ── Mobile nav toggle ── */
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('active');
-      menuBtn.classList.toggle('open', open);
-      menuBtn.setAttribute('aria-expanded', String(open));
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        menuBtn.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
+<footer>
+  <p>Island Lifeguards — Dix Hills, NY</p>
+  <p><a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a></p>
+  <p>&copy; 2026 Island Lifeguards. All rights reserved.</p>
+</footer>
 
-    /* ── Avatar initials fallback ── */
-    document.querySelectorAll('.t-avatar img').forEach(img => {
-      img.addEventListener('error', function() {
-        const wrap = this.parentElement;
-        const initials = wrap.getAttribute('data-initials') || '?';
-        // Clear any image and set initials text
-        this.style.display = 'none';
-        wrap.textContent = initials;
-        wrap.style.background = 'var(--ocean)';
-        wrap.style.color = 'white';
-        wrap.setAttribute('aria-hidden', 'false');
-      });
-    });
-
-    /* ── Scroll reveal ── */
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-          revealObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.feature-block, .service-card, .about-card, .t-card').forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(18px)';
-      el.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
-      revealObserver.observe(el);
-    });
-
-    /* ── Testimonials filter tabs ── */
-    const tabs = document.querySelectorAll('.t-tab');
-    const tCards = document.querySelectorAll('#testimonialsGrid .t-card');
-    const liveRegion = document.getElementById('t-live');
-
-    function updateLive(count, filterName) {
-      if (!liveRegion) return;
-      liveRegion.textContent = `${count} testimonials shown (${filterName}).`;
-    }
-
-    function applyFilter(filter) {
-      let visible = 0;
-      tCards.forEach(card => {
-        const cat = card.dataset.category;
-        const show = (filter === 'all') || (filter === 'events' && cat === 'events');
-        if (show) {
-          card.classList.remove('hidden');
-          // animate in
-          requestAnimationFrame(() => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(12px)';
-            setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, 30);
-          });
-          visible++;
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-      updateLive(visible, filter === 'all' ? 'All' : 'Resorts & Events');
-    }
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
-        const filter = tab.dataset.filter;
-        applyFilter(filter);
-      });
-    });
-
-    // initialize
-    applyFilter('all');
-
-    /* ── Smooth scroll for nav links and closing mobile menu ── */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // if mobile menu open close it
-            if (mobileMenu.classList.contains('active')) {
-              mobileMenu.classList.remove('active');
-              menuBtn.classList.remove('open');
-              menuBtn.setAttribute('aria-expanded', 'false');
-            }
-          }
-        }
-      });
-    });
-
-    /* ── Set current year in footer ── */
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    /* ── Accessibility: announce filter on change (already using aria-live region) ── */
-    // applyFilter triggers updateLive which updates the aria-live region
-
-    /* ── Defensive: ensure logo exists and falls back to visible text if missing ── */
-    (function checkLogo() {
-      const logo = document.querySelector('.logo-img');
-      if (!logo) return;
-      // if image fails to load, replace with text
-      logo.addEventListener('error', () => {
-        const parent = logo.parentElement;
-        parent.removeChild(logo);
-        const txt = document.createElement('div');
-        txt.textContent = 'Island Lifeguards';
-        txt.style.fontWeight = '700';
-        txt.style.color = 'var(--ocean-dark)';
-        txt.style.fontFamily = 'Palatino Linotype, Georgia, serif';
-        parent.appendChild(txt);
-      });
-    })();
-
-  </script>
 </body>
 </html>
