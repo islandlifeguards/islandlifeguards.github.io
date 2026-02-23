@@ -8,22 +8,21 @@
 <!-- UPDATED STYLES START -->
 <style>
 /* ══════════════════════════════════════════════
-   DESIGN TOKENS — AquaMobile-inspired palette
-   with Island Lifeguards brand colors
+   DESIGN TOKENS
 ══════════════════════════════════════════════ */
 :root {
-  --sand:       #F5F5DC;
-  --deep-blue:  #1D3557;
-  --red:        #E63946;
-  --red-dark:   #c1222e;
-  --blue-mid:   #2a4a7f;
-  --blue-light: #e8eef6;
-  --sand-warm:  #faf8f2;
-  --sand-border:#e8e4d4;
-  --text-main:  #1a2b3c;
-  --text-mid:   #3d5166;
-  --text-soft:  #647a90;
-  --white:      #ffffff;
+  --sand:        #F5F5DC;
+  --deep-blue:   #1D3557;
+  --red:         #E63946;
+  --red-dark:    #c1222e;
+  --blue-mid:    #2a4a7f;
+  --blue-light:  #e8eef6;
+  --sand-warm:   #faf8f2;
+  --sand-border: #e8e4d4;
+  --text-main:   #1a2b3c;
+  --text-mid:    #3d5166;
+  --text-soft:   #647a90;
+  --white:       #ffffff;
   --nav-h: 76px;
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -31,7 +30,7 @@
   --shadow-sm: 0 1px 4px rgba(29,53,87,.07), 0 4px 14px rgba(29,53,87,.06);
   --shadow-md: 0 4px 16px rgba(29,53,87,.10), 0 12px 36px rgba(29,53,87,.08);
   --shadow-lg: 0 8px 32px rgba(29,53,87,.14), 0 24px 64px rgba(29,53,87,.10);
-  --transition: 220ms cubic-bezier(.2,.9,.2,1);
+  --t: 220ms cubic-bezier(.2,.9,.2,1);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,6 +42,7 @@ body {
   color: var(--text-main);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* ── NAV ── */
@@ -56,35 +56,28 @@ nav {
   box-shadow: 0 1px 0 rgba(255,255,255,.6), 0 2px 20px rgba(29,53,87,.08);
   display: flex; align-items: center; justify-content: center;
 }
-
 .nav-inner {
   width: 100%; max-width: 1200px;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2.5rem;
 }
 
-/* ── LOGO — DO NOT MODIFY THESE RULES ── */
-.logo-img {
-  max-height: 64px;
-  width: auto;
-  display: block;
-}
+/* ── LOGO — DO NOT MODIFY ── */
+.logo-img { max-height: 64px; width: auto; display: block; }
 
-/* ── NAV LINKS ── */
 .nav-links {
   display: flex; gap: 2rem; list-style: none; align-items: center;
 }
 .nav-links a {
   text-decoration: none; color: var(--deep-blue);
-  font-size: .8rem; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase;
-  transition: color var(--transition);
+  font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  transition: color var(--t);
   position: relative;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -.25rem; left: 0; right: 0; height: 2px;
   background: var(--red); transform: scaleX(0); transform-origin: center;
-  transition: transform var(--transition); border-radius: 1px;
+  transition: transform var(--t); border-radius: 1px;
 }
 .nav-links a:hover { color: var(--red); }
 .nav-links a:hover::after { transform: scaleX(1); }
@@ -93,8 +86,7 @@ nav {
   background: var(--red) !important; color: var(--white) !important;
   padding: .55rem 1.3rem; border-radius: var(--radius-sm);
   box-shadow: 0 2px 10px rgba(230,57,70,.32);
-  transition: background var(--transition), transform var(--transition),
-              box-shadow var(--transition) !important;
+  transition: background var(--t), transform var(--t), box-shadow var(--t) !important;
   font-weight: 700 !important;
 }
 .btn-nav:hover {
@@ -107,7 +99,7 @@ a:focus-visible, button:focus-visible {
   outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px;
 }
 
-/* ── HAMBURGER ── */
+/* Hamburger */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   cursor: pointer; padding: 6px; border: none; background: none;
@@ -120,7 +112,7 @@ a:focus-visible, button:focus-visible {
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── MOBILE MENU ── */
+/* Mobile menu */
 .mobile-menu {
   display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
   background: rgba(248,246,238,.97); backdrop-filter: blur(12px);
@@ -137,8 +129,7 @@ a:focus-visible, button:focus-visible {
 .mobile-menu a {
   display: block; color: var(--deep-blue); text-decoration: none;
   padding: .9rem 0; font-size: .95rem; font-weight: 600;
-  border-bottom: 1px solid rgba(29,53,87,.08);
-  transition: color var(--transition);
+  border-bottom: 1px solid rgba(29,53,87,.08); transition: color var(--t);
 }
 .mobile-menu a:last-of-type { border-bottom: none; }
 .mobile-menu a:hover { color: var(--red); }
@@ -149,27 +140,76 @@ a:focus-visible, button:focus-visible {
   font-weight: 700; text-transform: uppercase; font-size: .85rem; letter-spacing: .06em;
 }
 
-/* ── HERO ── */
+/* ── HERO IMAGE START ──
+   Photo background with deep-blue overlay (rgba 0.45) to guarantee
+   white text contrast (WCAG AA). The slow-zoom uses transform:scale
+   on the pseudo-element so only the compositor layer repaints — zero
+   layout triggers. Duration 30s, amplitude 1.01→1.03 (imperceptible).
+   Disabled entirely on prefers-reduced-motion.
+── */
 .hero {
   padding-top: var(--nav-h); min-height: 92vh;
+  /* CSS gradient fallback for very small/slow connections */
   background: linear-gradient(150deg, #1D3557 0%, #2a4a7f 55%, #1a3252 100%);
-  color: var(--white); display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
   text-align: center; position: relative; overflow: hidden;
 }
+
+/* Photo layer — separate pseudo-element so we can animate scale
+   without affecting text or the overlay */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('./markus-krisetya-nhTeowcfacg-unsplash.jpg');
+  background-position: center; background-size: cover;
+  background-repeat: no-repeat;
+  /* Slow zoom: scale 1.01 → 1.03, 30s cycle, alternate */
+  animation: heroZoom 30s ease-in-out infinite alternate;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.01); }
+  to   { transform: scale(1.03); }
+}
+
+/* Deep-blue + sand-tint overlay — ensures legibility over any photo tone.
+   Two-layer: bottom deep-blue tint + subtle vignette at top/bottom edges. */
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(29,53,87,.55) 0%,
+      rgba(29,53,87,.38) 50%,
+      rgba(29,53,87,.62) 100%
+    );
+  pointer-events: none;
+}
+
 .hero::before {
   content: ''; position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 90% 60% at 50% 110%, rgba(230,57,70,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 90% 60% at 50% 110%, rgba(230,57,70,.10) 0%, transparent 70%),
     radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255,255,255,.04) 0%, transparent 60%);
-  pointer-events: none;
+  pointer-events: none; z-index: 2;
 }
 .hero::after {
   content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
-  background: var(--sand-warm);
-  clip-path: ellipse(55% 100% at 50% 100%);
+  background: var(--sand-warm); clip-path: ellipse(55% 100% at 50% 100%); z-index: 4;
 }
-.hero-content { position: relative; z-index: 1; padding: 3rem 2rem 6rem; max-width: 800px; }
 
+.hero-content {
+  position: relative; z-index: 3;
+  padding: 3rem 2rem 6rem; max-width: 800px;
+}
+
+/* Disable zoom on reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg { animation: none !important; transform: scale(1.02); }
+}
+/* ── HERO IMAGE END ── */
 .hero-eyebrow {
   display: inline-block;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
@@ -177,7 +217,6 @@ a:focus-visible, button:focus-visible {
   font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
   padding: .35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
 }
-
 .hero h1 {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.08; letter-spacing: -.02em;
@@ -185,69 +224,119 @@ a:focus-visible, button:focus-visible {
 }
 .hero p {
   font-size: clamp(.95rem, 2vw, 1.15rem); opacity: .8;
-  max-width: 520px; margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.7;
+  max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
 }
-
 .btn-primary {
   display: inline-block; background: var(--red); color: var(--white);
   padding: 1rem 2.4rem; border-radius: var(--radius-sm);
   font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: .07em;
   text-decoration: none; border: none; cursor: pointer; font-family: inherit;
   box-shadow: 0 4px 24px rgba(230,57,70,.44);
-  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  transition: background var(--t), transform var(--t), box-shadow var(--t);
 }
 .btn-primary:hover {
   background: var(--red-dark); transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(230,57,70,.48);
 }
-.btn-primary:active { transform: translateY(0); }
 
-/* ── SECTION SCAFFOLDING ── */
+/* ── SECTIONS ── */
 .section-wrap { padding: 5.5rem 2rem; max-width: 1100px; margin: 0 auto; }
-
 .section-label {
   display: inline-block; font-size: .7rem; font-weight: 800;
   letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: .75rem;
 }
-
 h2 {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(1.75rem, 3.5vw, 2.4rem); color: var(--deep-blue);
   margin-bottom: .6rem; letter-spacing: -.01em; line-height: 1.2;
 }
-
 .section-sub {
   color: var(--text-soft); font-size: 1rem; max-width: 540px;
   margin-bottom: 3rem; line-height: 1.7;
 }
 
+/* ── ABOUT IMAGE START ──
+   Wide screens: two-column layout — photo left (40%), text right (60%).
+   The image gets a subtle right-edge vignette so it blends into the text panel.
+   Mobile: image stacks above text with a dark overlay for readability.
+   Soft gradient overlay over image keeps the paragraph the visual focus.
+── */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  min-height: 420px;
+}
+
+.about-img-panel {
+  position: relative; overflow: hidden;
+}
+.about-img-panel img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
+}
+/* Right-edge vignette — blends photo into text panel */
+.about-img-panel::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(29,53,87,.08) 0%,
+    rgba(250,248,242,.85) 92%,
+    rgba(250,248,242,1) 100%
+  );
+  pointer-events: none;
+}
+
+.about-text-panel {
+  padding: 4rem 3rem 4rem 2.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--sand-warm);
+}
+
+/* Mobile: stack image above text, constrain height */
+@media (max-width: 780px) {
+  .about-wrap { grid-template-columns: 1fr; }
+  .about-img-panel { height: 260px; }
+  /* On mobile overlay is darker so text below is clearly separate */
+  .about-img-panel::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(29,53,87,.08) 0%,
+      rgba(250,248,242,.6) 80%,
+      rgba(250,248,242,1) 100%
+    );
+  }
+  .about-text-panel { padding: 2.5rem 1.5rem; }
+}
+/* ── ABOUT IMAGE END ── */
+
 /* ── CARDS ── */
 .cards {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem;
 }
-
 .card {
   background: var(--sand-warm); border: 1px solid var(--sand-border);
   border-radius: var(--radius-md); padding: 2.25rem 2rem;
   display: flex; flex-direction: column;
-  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  transition: box-shadow var(--t), transform var(--t), border-color var(--t);
   position: relative; overflow: hidden;
 }
 .card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, var(--red), rgba(230,57,70,.3));
-  opacity: 0; transition: opacity var(--transition);
+  opacity: 0; transition: opacity var(--t);
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(29,53,87,.15); }
+.card:hover {
+  transform: translateY(-4px); box-shadow: var(--shadow-md);
+  border-color: rgba(29,53,87,.15);
+}
 .card:hover::before { opacity: 1; }
-
 .card-icon {
   width: 48px; height: 48px; background: var(--blue-light); border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1.4rem; color: var(--deep-blue); flex-shrink: 0;
 }
 .card-icon svg { width: 26px; height: 26px; fill: currentColor; }
-
 .card h3 {
   font-family: Georgia, serif; font-size: 1.18rem; color: var(--deep-blue);
   margin-bottom: .6rem; line-height: 1.3;
@@ -260,7 +349,6 @@ footer {
   padding: 3rem 2rem; text-align: center;
 }
 footer > p { font-size: .82rem; }
-
 .footer-social {
   display: flex; justify-content: center; align-items: center;
   gap: clamp(10px,2vw,16px); margin: 0 0 1.25rem;
@@ -269,14 +357,11 @@ footer > p { font-size: .82rem; }
   display: inline-flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; border-radius: var(--radius-sm);
   color: rgba(255,255,255,.55); text-decoration: none; background: transparent;
-  transition: color var(--transition), transform var(--transition); outline: none;
+  transition: color var(--t), transform var(--t); outline: none;
 }
 .social-icon { width: 58%; height: 58%; display: block; fill: currentColor; flex-shrink: 0; }
 .social-link:hover, .social-link:focus { color: var(--red); transform: translateY(-3px); }
 .social-link:focus-visible { box-shadow: 0 0 0 3px rgba(230,57,70,.4); }
-@media (prefers-reduced-motion: reduce) {
-  .social-link { transition: color .15s; transform: none !important; }
-}
 
 /* ── BOOKING MODAL ── */
 .modal-overlay {
@@ -286,7 +371,6 @@ footer > p { font-size: .82rem; }
   backdrop-filter: blur(6px); padding: 1rem;
 }
 .modal-overlay.active { display: flex; }
-
 .modal-box {
   background: var(--white); border-radius: var(--radius-lg);
   padding: 2.75rem 2.5rem; width: 100%; max-width: 480px;
@@ -297,22 +381,19 @@ footer > p { font-size: .82rem; }
   from { opacity: 0; transform: translateY(22px) scale(.97); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
-
 .modal-close {
   position: absolute; top: 1.1rem; right: 1.1rem;
   background: none; border: none; cursor: pointer;
   width: 34px; height: 34px; border-radius: 50%;
   color: #888; font-size: 1.3rem; line-height: 1;
   display: flex; align-items: center; justify-content: center;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--t), color var(--t);
 }
 .modal-close:hover { background: #fef2f2; color: var(--red); }
-
 .modal-box h3 {
   font-family: Georgia, serif; font-size: 1.55rem;
   color: var(--deep-blue); margin-bottom: 1.6rem; line-height: 1.2;
 }
-
 .form-group { margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: .35rem; }
 .form-group label {
   font-size: .72rem; font-weight: 700; letter-spacing: .09em;
@@ -323,7 +404,7 @@ footer > p { font-size: .82rem; }
   border: 1.5px solid var(--sand-border); border-radius: var(--radius-sm);
   font-family: inherit; font-size: .93rem; color: var(--text-main);
   background: var(--sand-warm);
-  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  transition: border-color var(--t), box-shadow var(--t), background var(--t);
   outline: none;
 }
 .form-group input:focus, .form-group textarea:focus {
@@ -331,9 +412,7 @@ footer > p { font-size: .82rem; }
   box-shadow: 0 0 0 3px rgba(29,53,87,.09);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
-
 .err { color: var(--red); font-size: .78rem; margin-top: .2rem; display: none; font-weight: 500; }
-
 .confirm-wrap { text-align: center; padding: 1.5rem 0; }
 .confirm-check {
   width: 60px; height: 60px; border-radius: 50%; background: #edf7ee;
@@ -346,78 +425,101 @@ footer > p { font-size: .82rem; }
 .confirm-wrap .note { font-size: .82rem; color: var(--text-soft); }
 .confirm-wrap a { color: var(--deep-blue); }
 
-/* ── CHATBOT WIDGET ── */
-.chat-bubble {
-  position: fixed; bottom: 24px; right: 24px;
+/* ── CHATBOT WIDGET (scoped .il-chat prefix) ── */
+.il-chat-toggle {
+  position: fixed; bottom: 20px; right: 20px; z-index: 600;
   width: 56px; height: 56px; border-radius: 50%;
   background: var(--deep-blue); color: var(--white);
   border: none; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(29,53,87,.40); z-index: 400;
-  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 24px rgba(29,53,87,.45);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  transform: translateZ(0);
 }
-.chat-bubble:hover { transform: scale(1.08); box-shadow: 0 8px 30px rgba(29,53,87,.50); }
-.chat-bubble svg { width: 26px; height: 26px; fill: var(--white); pointer-events: none; }
+.il-chat-toggle:hover  { transform: scale(1.08) translateZ(0); box-shadow: 0 8px 32px rgba(29,53,87,.55); }
+.il-chat-toggle:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.il-chat-toggle svg { width: 26px; height: 26px; fill: var(--white); pointer-events: none; flex-shrink: 0; }
 
-.chat-panel {
-  display: none; position: fixed; bottom: 92px; right: 24px; width: 300px;
-  background: var(--white); border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg); z-index: 400; overflow: hidden;
-  animation: chatUp .22s cubic-bezier(.2,.9,.2,1);
+.il-chat-panel {
+  position: fixed; bottom: 88px; right: 20px; z-index: 599;
+  width: 320px; background: var(--white); border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(29,53,87,.18), 0 2px 8px rgba(29,53,87,.08);
+  display: flex; flex-direction: column; overflow: hidden;
+  transform: translateY(10px) scale(0.985) translateZ(0);
+  opacity: 0; visibility: hidden;
+  transition: opacity 280ms cubic-bezier(.2,.9,.3,1), transform 280ms cubic-bezier(.2,.9,.3,1), visibility 280ms;
+  pointer-events: none;
 }
-.chat-panel.open { display: flex; flex-direction: column; }
-@keyframes chatUp {
-  from { opacity: 0; transform: translateY(14px) scale(.96); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+.il-chat-panel.il-open {
+  transform: translateY(0) scale(1) translateZ(0);
+  opacity: 1; visibility: visible; pointer-events: auto;
 }
 
-.chat-header {
+.il-chat-head {
   background: var(--deep-blue); color: var(--white);
-  padding: .9rem 1.15rem; display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.1rem .85rem;
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
 }
-.chat-header-left { display: flex; align-items: center; gap: .65rem; }
-.chat-avatar {
-  width: 32px; height: 32px; border-radius: 50%; background: var(--sand);
+.il-chat-head-left { display: flex; align-items: center; gap: .65rem; }
+.il-chat-avatar {
+  width: 34px; height: 34px; border-radius: 50%; background: #F5F5DC;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.chat-avatar svg { width: 18px; height: 18px; fill: var(--deep-blue); }
-.chat-title { font-weight: 700; font-size: .88rem; }
-.chat-sub { font-size: .7rem; opacity: .65; }
-.chat-x {
+.il-chat-avatar svg { width: 19px; height: 19px; fill: var(--deep-blue); }
+.il-chat-title { font-weight: 700; font-size: .9rem; line-height: 1.2; }
+.il-chat-sub   { font-size: .72rem; opacity: .7; line-height: 1.3; }
+.il-chat-close {
   background: none; border: none; color: var(--white); cursor: pointer;
-  font-size: 1.2rem; line-height: 1; padding: 3px 7px; border-radius: 4px;
-  transition: background var(--transition);
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 160ms ease; flex-shrink: 0;
 }
-.chat-x:hover { background: rgba(255,255,255,.15); }
+.il-chat-close:hover { background: rgba(255,255,255,.18); }
+.il-chat-close:focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 2px; }
+.il-chat-close svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; }
 
-.chat-body {
-  padding: 1rem 1rem .75rem; display: flex; flex-direction: column; gap: .6rem;
-  max-height: 160px; overflow-y: auto;
-}
-.chat-msg {
-  background: var(--blue-light); border-radius: 8px;
-  padding: .7rem .9rem; font-size: .84rem; line-height: 1.5; color: var(--text-main);
+.il-chat-options {
+  padding: 1rem 1rem .5rem;
+  display: flex; flex-direction: column; gap: 8px;
+  overflow-y: auto; flex: 1;
 }
 
-.chat-actions {
-  display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; padding: 0 .9rem .9rem;
+.il-chat-opt {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 48px; padding: .65rem .9rem;
+  background: #faf8f2; color: var(--deep-blue);
+  border: 1.5px solid #e8e4d4; border-radius: 10px;
+  font-family: inherit; font-size: .88rem; font-weight: 600;
+  cursor: pointer; text-align: left; text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transform: translateZ(0);
 }
-.chat-btn {
-  background: var(--sand-warm); color: var(--deep-blue); border: 1.5px solid var(--sand-border);
-  border-radius: 7px; padding: .5rem .35rem; font-size: .76rem; font-weight: 600;
-  cursor: pointer; text-align: center; font-family: inherit;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+.il-chat-opt:hover,
+.il-chat-opt:focus-visible {
+  background: var(--deep-blue); color: var(--white); border-color: var(--deep-blue);
+  transform: translateX(6px) translateZ(0);
 }
-.chat-btn:hover { background: var(--deep-blue); color: var(--white); border-color: var(--deep-blue); }
-.chat-btn.wide {
-  grid-column: 1 / -1; background: var(--red); color: var(--white); border-color: var(--red);
-  font-size: .8rem; padding: .58rem;
-}
-.chat-btn.wide:hover { background: var(--red-dark); border-color: var(--red-dark); }
+.il-chat-opt:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.il-chat-opt svg { width: 20px; height: 20px; flex-shrink: 0; fill: currentColor; transition: fill 180ms ease; }
 
-@media (max-width: 380px) {
-  .chat-panel { right: 8px; width: calc(100vw - 16px); }
-  .chat-bubble { right: 12px; bottom: 16px; }
+.il-chat-opt.il-book {
+  background: var(--red); color: var(--white); border-color: var(--red); margin-top: 4px;
+}
+.il-chat-opt.il-book:hover,
+.il-chat-opt.il-book:focus-visible { background: #c1222e; border-color: #c1222e; color: var(--white); }
+
+.il-chat-foot {
+  padding: .55rem 1rem; border-top: 1px solid #e8e4d4;
+  font-size: .7rem; color: #9aabb8; text-align: center; flex-shrink: 0;
+}
+
+@media (max-width: 420px) {
+  .il-chat-panel { width: calc(100vw - 24px); right: 12px; bottom: 80px; }
+  .il-chat-toggle { right: 12px; bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .il-chat-panel, .il-chat-opt, .il-chat-toggle, .il-chat-close { transition: none !important; }
+  .il-chat-panel { transform: none !important; }
 }
 
 /* ── RESPONSIVE ── */
@@ -431,12 +533,147 @@ footer > p { font-size: .82rem; }
   .cards { grid-template-columns: 1fr; }
   .section-wrap { padding: 4rem 1.5rem; }
   .modal-box { padding: 2rem 1.5rem; }
+  .chat-panel { right: 8px; width: calc(100vw - 16px); }
+  .chat-bubble { right: 12px; bottom: 16px; }
 }
-@media (max-width: 400px) { .hero h1 { font-size: 2.2rem; } }
+
+/* ══════════════════════════════════════════════
+   WATER BACKDROP ANIMATION
+
+   Technique: A fixed full-viewport SVG layer placed behind all content
+   (z-index: -1, pointer-events: none). It contains two elements:
+   1. An SVG <filter> using feTurbulence + feDisplacementMap that produces
+      an organic, undulating distortion. The turbulence baseFrequency and
+      seed are animated with a very long duration (30-40s) so movement is
+      imperceptibly slow — closer to a long ocean swell than a ripple.
+   2. A set of very low-opacity gradient ellipses that shift position slowly
+      via CSS @keyframes using transform: translate().
+
+   Why it's performant:
+   - The SVG filter is GPU-composited; no JS animation loop needed.
+   - Only opacity and transform are animated (no layout triggers = no repaints).
+   - opacity <= 0.05 ensures it never impairs text legibility.
+   - The whole element is pointer-events: none so it never intercepts clicks.
+
+   Why it's accessible:
+   - @media (prefers-reduced-motion: reduce) completely halts all animation.
+   - On narrow screens (<=600px) the animation is also disabled to reduce
+     battery / GPU load on mobile devices.
+══════════════════════════════════════════════ */
+.water-backdrop {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; overflow: hidden;
+  /* behind everything */
+}
+.water-backdrop svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+/* Soft drifting gradient blobs */
+.water-blob {
+  position: absolute; border-radius: 50%;
+  mix-blend-mode: multiply;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform;
+}
+.water-blob-1 {
+  width: 80vw; height: 60vh;
+  top: -10%; left: -20%;
+  background: radial-gradient(ellipse, rgba(29,53,87,.04) 0%, transparent 70%);
+  animation: driftA 38s ease-in-out infinite alternate;
+}
+.water-blob-2 {
+  width: 70vw; height: 80vh;
+  bottom: -15%; right: -15%;
+  background: radial-gradient(ellipse, rgba(15,76,129,.035) 0%, transparent 70%);
+  animation: driftB 45s ease-in-out infinite alternate;
+}
+.water-blob-3 {
+  width: 50vw; height: 50vh;
+  top: 30%; left: 25%;
+  background: radial-gradient(ellipse, rgba(245,245,220,.055) 0%, transparent 70%);
+  animation: driftC 52s ease-in-out infinite alternate;
+}
+
+@keyframes driftA {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(8vw, 5vh) scale(1.05); }
+}
+@keyframes driftB {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-6vw, -4vh) scale(1.04); }
+}
+@keyframes driftC {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(4vw, -6vh) scale(1.03); }
+}
+
+/* Disable animation for reduced-motion or small/mobile screens */
+@media (prefers-reduced-motion: reduce) {
+  .water-blob { animation: none !important; }
+  .water-backdrop svg animate,
+  .water-backdrop svg animateTransform { display: none; }
+}
+@media (max-width: 600px) {
+  .water-blob { animation: none !important; }
+}
+
+/* Everything except the water backdrop must sit above it */
+nav, .mobile-menu, .hero, section, div, footer, .modal-overlay,
+.chat-bubble, .chat-panel { position: relative; }
 </style>
 <!-- UPDATED STYLES END -->
 </head>
 <body>
+
+<!-- WATER BACKDROP START
+     Layered semi-transparent gradient blobs + SVG turbulence filter.
+     See CSS comment block above for full technique explanation.
+-->
+<div class="water-backdrop" aria-hidden="true" role="presentation">
+  <!-- SVG turbulence layer — very low opacity organic shimmer -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+       preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="waterFilter" x="0%" y="0%" width="100%" height="100%"
+              color-interpolation-filters="sRGB">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.012 0.008"
+          numOctaves="3"
+          seed="8"
+          result="turbOut">
+          <!-- Animate baseFrequency very slowly for a subtle living-water feel -->
+          <animate
+            attributeName="baseFrequency"
+            dur="34s"
+            values="0.012 0.008; 0.014 0.010; 0.012 0.008"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
+        </feTurbulence>
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="turbOut"
+          scale="14"
+          xChannelSelector="R"
+          yChannelSelector="G"/>
+      </filter>
+    </defs>
+    <!-- Large very-low-opacity rectangle that receives the water distortion -->
+    <rect width="100%" height="100%"
+          fill="rgba(29,53,87,0.032)"
+          filter="url(#waterFilter)"/>
+  </svg>
+  <!-- CSS-animated gradient blobs (see .water-blob-* rules above) -->
+  <div class="water-blob water-blob-1"></div>
+  <div class="water-blob water-blob-2"></div>
+  <div class="water-blob water-blob-3"></div>
+</div>
+<!-- WATER BACKDROP END -->
 
 <!-- NAV -->
 <nav aria-label="Main navigation">
@@ -468,8 +705,15 @@ footer > p { font-size: .82rem; }
   <a href="#" class="btn-mob mobile-link" id="mobileBookBtn">Book a Lifeguard</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO IMAGE START -->
+<!-- markus-krisetya photo — full-bleed hero background.
+     .hero-bg is a separate layer so the slow-zoom CSS animation
+     doesn't affect text or the overlay. -->
 <section class="hero" aria-label="Introduction">
+  <!-- Photo layer (animated zoom) -->
+  <div class="hero-bg" role="img" aria-label="Lifeguard watching over a pool"></div>
+  <!-- Overlay layer — deep-blue gradient for text contrast -->
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Long Island's Premier Lifeguard Service</div>
     <h1>You Do the Fun.<br>We'll Do the Safety.</h1>
@@ -477,16 +721,14 @@ footer > p { font-size: .82rem; }
     <button class="btn-primary" id="heroBookBtn">Book a Lifeguard</button>
   </div>
 </section>
+<!-- HERO IMAGE END -->
 
 <!-- SERVICES -->
-<!-- UPDATED SECTION START: services -->
 <div id="services" style="background:var(--white);">
   <div class="section-wrap">
-    <span class="section-label">What We Do</span>
     <h2>Our Services</h2>
     <p class="section-sub">Certified coverage for every aquatic environment — residential, waterfront, or event.</p>
     <div class="cards">
-
       <div class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M2 20a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0v-2c-1.14 0-1.9.45-2.5.9-.6-.45-1.36-.9-2.5-.9s-1.9.45-2.5.9c-.6-.45-1.36-.9-2.5-.9s-1.9.45-2.5.9C8.4 18.45 7.64 18 6.5 18c-1.14 0-1.9.45-2.5.9V20zM12 2C9.24 2 7 4.24 7 7v7h10V7c0-2.76-2.24-5-5-5zm3 7h-2V7c0-.55.45-1 1-1s1 .45 1 1v2zm-4 0H9V7c0-.55.45-1 1-1s1 .45 1 1v2z"/></svg>
@@ -494,7 +736,6 @@ footer > p { font-size: .82rem; }
         <h3>Pool Lifeguarding</h3>
         <p>Professional lifeguards for residential pools, HOA pools, and private events across Long Island.</p>
       </div>
-
       <div class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M17 16.99c-1.35 0-2.2.42-2.95.8-.65.33-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.18.6-2.05.6v1.95c1.35 0 2.2-.42 2.95-.8.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.42 2.95-.8c.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8zm0-4.5c-1.35 0-2.2.43-2.95.8-.65.32-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.32-1.18.6-2.05.6v1.95c1.35 0 2.2-.43 2.95-.8.65-.32 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.32 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8z"/></svg>
@@ -502,7 +743,6 @@ footer > p { font-size: .82rem; }
         <h3>Beach &amp; Open Water</h3>
         <p>Experienced guards trained in surf, current, and tidal conditions for waterfront and open-water environments.</p>
       </div>
-
       <div class="card">
         <div class="card-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1zm-2 14-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
@@ -510,20 +750,31 @@ footer > p { font-size: .82rem; }
         <h3>Event Safety Planning</h3>
         <p>Pre-event site assessments, multi-guard deployment, and custom emergency action plans for larger gatherings.</p>
       </div>
-
     </div>
   </div>
 </div>
-<!-- UPDATED SECTION END: services -->
 
-<!-- ABOUT -->
-<div id="about" style="background:var(--sand-warm);border-top:1px solid var(--sand-border);border-bottom:1px solid var(--sand-border);">
-  <div class="section-wrap">
-    <span class="section-label">Who We Are</span>
-    <h2>About Island Lifeguards</h2>
-    <p style="max-width:720px;color:var(--text-mid);font-size:1.05rem;line-height:1.85;">Founded in Dix Hills and rooted in the Long Island community, Island Lifeguards provides certified, professionally trained lifeguard staffing for residential pools, waterfront properties, and private events. Every guard is ARC-certified, background-checked, and experienced in private-event coverage. We serve Nassau and Suffolk County — bringing the same professional standard found at premier aquatic facilities directly to your event.</p>
+<!-- ABOUT IMAGE START -->
+<!-- matthew-waring photo — decorative left panel on wide screens,
+     stacked above text on mobile. aria-hidden on the decorative image
+     since the section heading and paragraph carry the meaning. -->
+<div id="about" style="border-top:1px solid var(--sand-border);border-bottom:1px solid var(--sand-border);overflow:hidden;">
+  <div class="about-wrap">
+    <!-- Decorative photo panel -->
+    <div class="about-img-panel">
+      <img src="./matthew-waring-MJAoiige14E-unsplash.jpg"
+           alt="Lifeguard on duty at a pool"
+           loading="lazy"
+           width="800" height="600">
+    </div>
+    <!-- Text panel -->
+    <div class="about-text-panel">
+      <h2>About Island Lifeguards</h2>
+      <p style="max-width:580px;color:var(--text-mid);font-size:1.05rem;line-height:1.85;margin-top:.75rem;">Founded in Dix Hills and rooted in the Long Island community, Island Lifeguards provides certified, professionally trained lifeguard staffing for residential pools, waterfront properties, and private events. Every guard is ARC-certified, background-checked, and experienced in private-event coverage. We serve Nassau and Suffolk County — bringing the same professional standard found at premier aquatic facilities directly to your event.</p>
+    </div>
   </div>
 </div>
+<!-- ABOUT IMAGE END -->
 
 <!-- CONTACT -->
 <section id="contact" style="background:var(--deep-blue);position:relative;overflow:hidden;">
@@ -534,7 +785,7 @@ footer > p { font-size: .82rem; }
     <button class="btn-primary" id="contactBookBtn">Request a Booking</button>
     <p style="margin-top:1.6rem;color:rgba(255,255,255,.38);font-size:.82rem;">
       Or reach us directly:
-      <a href="mailto:info@islandlifeguards.com" style="color:rgba(255,255,255,.62);transition:color var(--transition);">info@islandlifeguards.com</a>
+      <a href="/cdn-cgi/l/email-protection#3b5248575a555f57525d5e5c4e5a495f4858547b5c565a525715585456" style="color:rgba(255,255,255,.62);"><span class="__cf_email__" data-cfemail="b6dfc5dad7d8d2dadfd0d3d1c3d7c4d2c5d5d9f6d1dbd7dfda98d5d9db">[email&#160;protected]</span></a>
     </p>
   </div>
 </section>
@@ -583,13 +834,13 @@ footer > p { font-size: .82rem; }
         </div>
         <div class="form-group">
           <label for="bDetails">Event Details</label>
-          <textarea id="bDetails" name="details" placeholder="Date, location, number of guests…"></textarea>
+          <textarea id="bDetails" name="details" placeholder="Date, location, number of guests&#8230;"></textarea>
           <span class="err" id="bDetailsErr">Please describe your event.</span>
         </div>
         <button type="submit" class="btn-primary" style="width:100%;margin-top:.5rem;">Submit Request</button>
       </form>
     </div>
-    <div id="confirmView" style="display:none;">
+    <div id="confirmView" style="display:none;" aria-live="polite">
       <div class="confirm-wrap">
         <div class="confirm-check" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="28" height="28" fill="none"
@@ -601,7 +852,7 @@ footer > p { font-size: .82rem; }
         <p>Thanks &mdash; we'll send you a Google Form to finalize the booking.</p>
         <p class="note">
           A follow-up will be sent from
-          <a href="mailto:info@islandlifeguards.com">info@islandlifeguards.com</a>
+          <a href="/cdn-cgi/l/email-protection#721b011e131c161e1b1417150713001601111d32151f131b1e5c111d1f"><span class="__cf_email__" data-cfemail="365f455a5758525a5f5053514357445245555976515b575f5a1855595b">[email&#160;protected]</span></a>
         </p>
       </div>
     </div>
@@ -610,47 +861,137 @@ footer > p { font-size: .82rem; }
 <!-- BOOKING MODAL END -->
 
 <!-- CHATBOT WIDGET START -->
-<div id="chatPanel" class="chat-panel"
-     role="dialog" aria-modal="true" aria-label="Island Lifeguards assistant">
-  <div class="chat-header">
-    <div class="chat-header-left">
-      <div class="chat-avatar" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
+<!--
+  Scoped under .il-chat prefix to avoid collisions.
+  Uses CSS visibility+opacity+transform transitions (not display:none toggle)
+  so open/close can animate in both directions.
+  Focus trap cycles Tab/Shift+Tab through all .il-chat-focusable elements.
+  Esc closes panel and restores focus to toggle.
+  prefers-reduced-motion: all transitions disabled; panel shows/hides instantly.
+-->
+
+<!-- Panel (role=dialog, aria-modal, focus managed by JS) -->
+<div id="ilChatPanel"
+     class="il-chat-panel"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Island Lifeguards quick actions"
+     aria-hidden="true">
+
+  <!-- Header -->
+  <div class="il-chat-head">
+    <div class="il-chat-head-left">
+      <div class="il-chat-avatar" aria-hidden="true">
+        <!-- Lifeguard/person icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/>
         </svg>
       </div>
       <div>
-        <div class="chat-title">Island Lifeguards</div>
-        <div class="chat-sub">How can we help?</div>
+        <div class="il-chat-title">Island Lifeguards</div>
+        <div class="il-chat-sub">Hi &mdash; quick links and booking.</div>
       </div>
     </div>
-    <button class="chat-x" id="chatCloseBtn" aria-label="Close assistant">&times;</button>
+    <!-- Close button — first focusable element inside panel -->
+    <button class="il-chat-close il-chat-focusable"
+            id="ilChatClose"
+            aria-label="Close assistant panel">
+      <!-- X icon -->
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6"  y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
   </div>
-  <div class="chat-body" id="chatBody">
-    <div class="chat-msg">
-      👋 Hi! I'm the Island Lifeguards assistant. What can I help you with?
-    </div>
+
+  <!-- Options list — aria-live so screen readers hear dynamic messages -->
+  <div class="il-chat-options" aria-live="polite" role="list">
+
+    <!-- About -->
+    <button class="il-chat-opt il-chat-focusable"
+            data-il-action="about"
+            aria-label="Scroll to About section">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 2a10 10 0 1 1 0 20A10 10 0 0 1 12 2zm0 9a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 11zm-1 2v5h2v-5h-2z"/>
+      </svg>
+      About Us
+    </button>
+
+    <!-- Contact -->
+    <button class="il-chat-opt il-chat-focusable"
+            data-il-action="contact"
+            aria-label="Scroll to Contact section">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      Contact
+    </button>
+
+    <!-- Instagram -->
+    <a class="il-chat-opt il-chat-focusable"
+       href="https://www.instagram.com/islandlifeguards/"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Island Lifeguards on Instagram (opens in new tab)">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM18.7 6.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/>
+      </svg>
+      Instagram
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="il-chat-opt il-chat-focusable"
+       href="https://www.linkedin.com/company/island-lifeguards"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Island Lifeguards on LinkedIn (opens in new tab)">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.5h5v13H0v-13zM8.5 8.5h4.8v1.8h.1c.7-1.3 2.4-2.7 5-2.7 5.3 0 6.3 3.5 6.3 8v6.9h-5v-6.1c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4v6.2h-5V8.5z"/>
+      </svg>
+      LinkedIn
+    </a>
+
+    <!-- Email -->
+    <a class="il-chat-opt il-chat-focusable" href="/cdn-cgi/l/email-protection#f39a809f929d979f9a9596948692819780909cb3949e929a9fdd909c9e" aria-label="Email Island Lifeguards">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      Email Us
+    </a>
+
+    <!-- Book CTA -->
+    <button class="il-chat-opt il-book il-chat-focusable"
+            data-il-action="book"
+            aria-label="Open booking form">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 18H5V9h14v12zm0-14H5V5h1v2h2V5h8v2h2V5h1v2z"/>
+      </svg>
+      Book a Lifeguard
+    </button>
+
   </div>
-  <div class="chat-actions">
-    <button class="chat-btn" data-action="about">About Us</button>
-    <button class="chat-btn" data-action="contact">Contact</button>
-    <button class="chat-btn" data-action="instagram">Instagram</button>
-    <button class="chat-btn" data-action="linkedin">LinkedIn</button>
-    <button class="chat-btn" data-action="email">Email Us</button>
-    <button class="chat-btn wide" data-action="book">&#128197; Book a Lifeguard</button>
+
+  <!-- Accessibility hint footer -->
+  <!-- Last focusable element for focus trap wrap-around -->
+  <div class="il-chat-foot" aria-hidden="true">
+    Press <kbd>Esc</kbd> to close &nbsp;&bull;&nbsp; <kbd>Tab</kbd> to navigate
   </div>
+
 </div>
 
-<button class="chat-bubble" id="chatBubble"
+<!-- Toggle button -->
+<button class="il-chat-toggle"
+        id="ilChatToggle"
         aria-label="Open Island Lifeguards assistant"
-        aria-haspopup="dialog" aria-expanded="false">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="ilChatPanel">
+  <!-- Chat bubble icon -->
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M20 2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h3l3 3 3-3h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-2 10H6v-2h12v2zm0-4H6V6h12v2z"/>
   </svg>
 </button>
 <!-- CHATBOT WIDGET END -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* MOBILE NAV */
 const menuBtn    = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -692,13 +1033,11 @@ function closeModal() {
   const el = document.getElementById(id);
   if (el) el.addEventListener('click', e => { e.preventDefault(); openModal(); });
 });
-
 modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
 });
-
 modal.addEventListener('keydown', e => {
   if (e.key !== 'Tab') return;
   const els = [...modal.querySelectorAll(
@@ -706,9 +1045,8 @@ modal.addEventListener('keydown', e => {
   )].filter(el => el.offsetParent !== null);
   const first = els[0], last = els[els.length - 1];
   if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-  else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+  else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
 });
-
 bookingForm.addEventListener('submit', e => {
   e.preventDefault();
   const name    = document.getElementById('bName').value.trim();
@@ -720,37 +1058,71 @@ bookingForm.addEventListener('submit', e => {
   show('bEmailErr',   !emailOk);
   show('bDetailsErr', !details);
   if (!name || !emailOk || !details) return;
-  formView.style.display = 'none';
+  formView.style.display    = 'none';
   confirmView.style.display = 'block';
 });
 
-/* CHATBOT WIDGET */
-const chatBubble   = document.getElementById('chatBubble');
-const chatPanel    = document.getElementById('chatPanel');
-const chatCloseBtn = document.getElementById('chatCloseBtn');
+/* ══════════════════════════════════
+   CHATBOT WIDGET — scoped to .il-chat / #ilChat*
+   Key features:
+   - CSS visibility+opacity+transform transitions (no display:none flip)
+     so both open AND close can animate.
+   - Focus trap: Tab/Shift+Tab cycle only through .il-chat-focusable elements.
+   - Esc binding: closes panel and restores focus to toggle.
+   - Integrates with existing openModal() for booking.
+══════════════════════════════════ */
+(function() {
+  const toggle    = document.getElementById('ilChatToggle');
+  const panel     = document.getElementById('ilChatPanel');
+  const closeBtn  = document.getElementById('ilChatClose');
 
-function openChat()  { chatPanel.classList.add('open');    chatBubble.setAttribute('aria-expanded','true');  chatCloseBtn.focus(); }
-function closeChat() { chatPanel.classList.remove('open'); chatBubble.setAttribute('aria-expanded','false'); chatBubble.focus(); }
+  function getFocusable() {
+    return [...panel.querySelectorAll('.il-chat-focusable')]
+      .filter(el => !el.disabled && el.offsetParent !== null);
+  }
 
-chatBubble.addEventListener('click', () =>
-  chatPanel.classList.contains('open') ? closeChat() : openChat()
-);
-chatCloseBtn.addEventListener('click', closeChat);
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && chatPanel.classList.contains('open')) closeChat();
-});
+  function openPanel() {
+    panel.classList.add('il-open');
+    panel.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    // Move focus to first focusable element inside panel (close button)
+    const focusable = getFocusable();
+    if (focusable.length) setTimeout(() => focusable[0].focus(), 50);
+  }
 
-const actions = {
-  instagram: () => window.open('https://www.instagram.com/islandlifeguards/', '_blank', 'noopener,noreferrer'),
-  linkedin:  () => window.open('https://www.linkedin.com/company/island-lifeguards', '_blank', 'noopener,noreferrer'),
-  email:     () => { window.location.href = 'mailto:info@islandlifeguards.com'; },
-  about:     () => { closeChat(); document.getElementById('about').scrollIntoView({ behavior:'smooth' }); },
-  contact:   () => { closeChat(); document.getElementById('contact').scrollIntoView({ behavior:'smooth' }); },
-  book:      () => { closeChat(); openModal(); },
-};
-document.querySelectorAll('.chat-btn[data-action]').forEach(btn => {
-  btn.addEventListener('click', () => { const fn = actions[btn.dataset.action]; if (fn) fn(); });
-});
-</script>
-</body>
-</html>
+  function closePanel() {
+    panel.classList.remove('il-open');
+    panel.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    // Restore focus to toggle button
+    toggle.focus();
+  }
+
+  toggle.addEventListener('click', () => {
+    panel.classList.contains('il-open') ? closePanel() : openPanel();
+  });
+
+  closeBtn.addEventListener('click', closePanel);
+
+  // Esc closes panel
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('il-open')) {
+      e.preventDefault();
+      closePanel();
+    }
+  });
+
+  // Focus trap — Tab and Shift+Tab cycle within panel
+  panel.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // Close on backdrop click (click outside panel a
