@@ -69,7 +69,8 @@
       display: flex; align-items: center;
       text-decoration: none; flex-shrink: 0;
     }
-    .nav-brand img {
+    .nav-brand img,
+    .logo-img {
       height: 64px; width: auto; max-width: 260px;
       object-fit: contain; display: block;
     }
@@ -372,7 +373,7 @@
     @media (max-width: 780px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .nav-brand img { height: 44px; max-width: 180px; }
+      .nav-brand img, .logo-img { height: 44px; max-width: 180px; }
     }
   </style>
 </head>
@@ -382,7 +383,7 @@
   <nav role="banner">
     <div class="nav-inner">
       <a href="#" class="nav-brand" aria-label="Island Lifeguards Home">
-        <img src="images/islandlifeguards-high-resolution-logo-transparent.png" alt="Island Lifeguards Logo" />
+        <img src="images/islandlifeguards-high-resolution-logo-transparent.png" alt="Island Lifeguards Logo" class="logo-img" />
       </a>
       <ul class="nav-links" role="list">
         <li><a href="#services">Services</a></li>
@@ -716,7 +717,7 @@
               </div>
               <div class="detail-text">
                 <span>Email</span>
-                <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#fc958f909d929890959a999b899d8e988f9f93bc9b919d9590d29f9391"><span class="__cf_email__" data-cfemail="9bf2e8f7faf5fff7f2fdfefceefae9ffe8f8f4dbfcf6faf2f7b5f8f4f6">[email&#160;protected]</span></a>
               </div>
             </div>
           </div>
@@ -753,7 +754,7 @@
         <h4>Quick Links</h4>
         <a href="#about">About Us</a>
         <a href="#testimonials">Testimonials</a>
-        <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#e188928d808f858d888784869480938592828ea1868c80888dcf828e8c"><span class="__cf_email__" data-cfemail="5a3329363b343e36333c3f3d2f3b283e2939351a3d373b333674393537">[email&#160;protected]</span></a>
         <a href="#contact" style="margin-top:0.5rem;">Book a Lifeguard →</a>
       </div>
       <div class="footer-col">
@@ -764,11 +765,11 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Island Lifeguards. All rights reserved.</p>
-      <a href="mailto:islandlifeguardsco@gmail.com">islandlifeguardsco@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#9af3e9f6fbf4fef6f3fcfffdeffbe8fee9f9f5dafdf7fbf3f6b4f9f5f7"><span class="__cf_email__" data-cfemail="9af3e9f6fbf4fef6f3fcfffdeffbe8fee9f9f5dafdf7fbf3f6b4f9f5f7">[email&#160;protected]</span></a>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /* ── Mobile nav toggle ── */
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -833,21 +834,4 @@
             card.classList.remove('hidden');
             // re-trigger fade
             card.style.opacity = '0';
-            card.style.transform = 'translateY(10px)';
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-              card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }));
-            visible++;
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-
-        liveRegion.textContent = `Showing ${visible} testimonial${visible !== 1 ? 's' : ''}.`;
-      });
-    });
-  </script>
-</body>
-</html>
+ 
